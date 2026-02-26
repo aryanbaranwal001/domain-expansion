@@ -2,22 +2,20 @@ import MahoragaWheel from "./MahoragaWheel";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 pb-24 md:pb-32">
       {/* Background wheel */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         <MahoragaWheel size={700} />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-start text-left pt-12">
         {/* Text */}
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full max-w-3xl flex flex-col items-start">
           <p className="font-mono text-sm text-muted-foreground opacity-0 animate-fade-in mb-2">
             // hello, world
           </p>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-            Aryan
-            <br />
-            <span className="text-primary glow-text">Baranwal</span>
+            Aryan <span className="text-primary glow-text">Baranwal</span>
           </h1>
 
           <p className="font-mono text-sm text-primary/60 mt-3 opacity-0 animate-fade-in-delay-2 group cursor-default">
@@ -27,17 +25,17 @@ const HeroSection = () => {
             </span>
           </p>
 
-          <p className="mt-6 text-lg text-secondary-foreground opacity-0 animate-fade-in-delay-2 max-w-md mx-auto">
+          <p className="mt-6 text-lg text-secondary-foreground opacity-0 animate-fade-in-delay-2 max-w-xl">
             Backend • Distributed Systems • Blockchain Infrastructure
           </p>
 
-          <p className="mt-4 text-muted-foreground text-sm leading-relaxed opacity-0 animate-fade-in-delay-3 max-w-lg mx-auto">
+          <p className="mt-4 text-muted-foreground text-sm leading-relaxed opacity-0 animate-fade-in-delay-3 max-w-2xl">
             Undergraduate at IIT Roorkee, building scalable backend systems and blockchain
             infrastructure. Interested in the intersection of distributed systems and real-world
             system design.
           </p>
 
-          <div className="mt-8 flex items-center gap-4 opacity-0 animate-fade-in-delay-3 justify-center">
+          <div className="mt-8 flex items-center gap-4 opacity-0 animate-fade-in-delay-3">
             <a
               href="#projects"
               onClick={(e) => {
