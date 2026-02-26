@@ -74,8 +74,8 @@ interface WheelViewerProps {
 
 const WheelViewer = ({ 
   position = [0, 0, 0], 
-  rotation = [0, 0, 0], 
-  scale = 0.01,
+  rotation = [1.02, 0, 0], 
+  scale = 0.03,
   cameraPosition = [0, 0, 10],
   fov = 35
 }: WheelViewerProps) => {
