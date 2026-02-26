@@ -77,7 +77,7 @@ const WheelViewer = ({
   rotation = [1.02, 0, 0], 
   scale = 0.03,
   cameraPosition = [0, 0, 10],
-  fov = 35
+  fov = 30
 }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
