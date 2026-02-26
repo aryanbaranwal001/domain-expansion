@@ -39,6 +39,8 @@ interface WheelProps {
   position: [number, number, number];
   rotation: [number, number, number];
   scale: number | [number, number, number];
+  cameraPosition?: [number, number, number];
+  fov?: number;
 }
 
 const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
@@ -56,9 +58,9 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
       receiveShadow
     >
       <meshStandardMaterial 
-        color="#8B6508" 
-        roughness={0.7} 
-        metalness={0.3} 
+        color="#A67C00" 
+        roughness={0.6} 
+        metalness={0.4} 
         emissive="#221100"
         emissiveIntensity={0.1}
       />
@@ -79,7 +81,7 @@ const WheelViewer = ({
   rotation = [1.02, 0, 0], 
   scale = 0.03,
   cameraPosition = [0, 0, 10],
-  fov = 30
+  fov = 35
 }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
@@ -90,25 +92,33 @@ const WheelViewer = ({
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         >
           <Suspense fallback={<Loader />}>
-            {/* Moody JJK-style Lighting */}
-            <ambientLight intensity={0.05} />
+            {/* MODIFY LIGHTING BELOW: */}
             
-            {/* Underglow - Deep Amber */}
-            <pointLight position={[0, -5, 2]} intensity={12} color="#ffaa00" distance={15} decay={2} />
+            {/* 1. Base brightness (increase for general visibility) */}
+            <ambientLight intensity={0.07} />
             
-            {/* Front dramatic light */}
+            {/* 2. Underglow (Amber light from beneath) */}
+            <pointLight 
+              position={[0, -3, 7]} 
+              intensity={60} 
+              color="#ffaa00" 
+              distance={15} 
+              decay={2} 
+            />
+            
+            {/* 3. Main Front Light (The primary spotlight) */}
             <spotLight 
-              position={[0, 5, 10]} 
-              intensity={20} 
-              angle={0.4} 
+              position={[0, 8, 12]} 
+              intensity={0} 
+              angle={0.5} 
               penumbra={1} 
               color="#ffffff" 
               castShadow 
               shadow-mapSize={[1024, 1024]}
             />
             
-            {/* Subtle side fill to keep geometry visible */}
-            <directionalLight position={[-5, 2, 2]} intensity={0.5} color="#4444ff" />
+            {/* 4. Side fill (Helps see the edges) */}
+            <directionalLight position={[-5, 5, 5]} intensity={0.4} color="#ffffff" />
 
             <Wheel 
               url="/wheel_full.stl" 
@@ -119,7 +129,7 @@ const WheelViewer = ({
 
             <ContactShadows 
               position={[0, -2.5, 0]} 
-              opacity={0.8} 
+              opacity={0.6} 
               scale={15} 
               blur={1.5} 
               far={5} 
