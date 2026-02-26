@@ -63,6 +63,7 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
       meshRef.current.rotation.z += 0.002;
     }
     if (materialRef.current) {
+      // Cursed Pulse: The wheel "breathes" with dark energy
       materialRef.current.emissiveIntensity = 0.2 + Math.sin(t * 1.5) * 0.15;
     }
   });
@@ -103,39 +104,44 @@ const CursedLighting = () => {
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
-      lightRef.current.intensity = 100 + Math.random() * 5 + Math.sin(t * 3) * 25;
+      // Slower, heavier throb instead of fast flickering
+      lightRef.current.intensity = 80 + Math.random() * 5 + Math.sin(t * 3) * 15;
     }
   });
 
   return (
     <>
-      <ambientLight intensity={0.03} />
+      <ambientLight intensity={0.02} />
       
+      {/* Hellish Underglow - Slower throb */}
       <pointLight 
         ref={lightRef}
         position={[0, -6, 4]} 
-        intensity={100} 
+        intensity={80} 
         color="#ff1100" 
         distance={25} 
         decay={2} 
       />
 
+      {/* Main Menacing Spot - Intensified for sharp definition */}
       <spotLight 
         position={[10, 15, 10]} 
-        intensity={550} 
+        intensity={450} 
         angle={0.25} 
         penumbra={1} 
         color="#ffffff" 
         castShadow 
       />
 
+      {/* Back Rim - Intensified Deep Amber */}
       <pointLight 
         position={[-8, 4, -8]} 
-        intensity={140} 
+        intensity={120} 
         color="#ff6600" 
       />
       
-      <directionalLight position={[-5, 0, 5]} intensity={1.2} color="#442200" />
+      {/* Side definition - Intensified */}
+      <directionalLight position={[-5, 0, 5]} intensity={1.0} color="#442200" />
     </>
   );
 };
@@ -166,7 +172,7 @@ const WheelViewer = ({
             alpha: true, 
             powerPreference: "high-performance",
             toneMapping: THREE.ReinhardToneMapping,
-            toneMappingExposure: 1.5,
+            toneMappingExposure: 1.3,
             premultipliedAlpha: false
           }}
         >
