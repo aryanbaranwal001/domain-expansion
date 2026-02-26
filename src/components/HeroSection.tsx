@@ -14,10 +14,7 @@ const HeroSection = () => {
         </div>
 
         {/* Text Section */}
-        <div className="w-full max-w-3xl flex flex-col items-center -mt-12">
-          <p className="font-mono text-sm text-muted-foreground opacity-0 animate-fade-in mb-2">
-            // hello, world
-          </p>
+        <div className="w-full max-w-3xl flex flex-col items-center -mt-28">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
             Aryan <span className="text-primary glow-text">Baranwal</span>
           </h1>
