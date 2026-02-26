@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import profileImg from "@/assets/profile.png";
 
 const navItems = ["about", "skills", "projects", "contact"];
@@ -28,10 +27,9 @@ const Navbar = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
           className="flex items-center gap-2 font-mono text-sm text-primary tracking-wider hover:glow-text transition-all"
         >
-          <Avatar className="h-6 w-6 border border-primary/20">
-            <AvatarImage src={profileImg} alt="Mahoraga" />
-            <AvatarFallback>M</AvatarFallback>
-          </Avatar>
+          <div className="h-6 w-6 rounded-full overflow-hidden border border-primary/20 flex items-center justify-center bg-muted shrink-0">
+            <img src={profileImg} alt="Mahoraga" className="aspect-square h-full w-full object-cover" />
+          </div>
           mahoraga
         </button>
         <div className="hidden md:flex items-center gap-8">
