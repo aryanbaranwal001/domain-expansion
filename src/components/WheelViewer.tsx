@@ -60,10 +60,9 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (meshRef.current) {
-      meshRef.current.rotation.z += 0.002; // Slower, heavier rotation
+      meshRef.current.rotation.z += 0.002;
     }
     if (materialRef.current) {
-      // Cursed Pulse: The wheel "breathes" with dark energy
       materialRef.current.emissiveIntensity = 0.2 + Math.sin(t * 1.5) * 0.15;
     }
   });
@@ -87,10 +86,10 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
       >
         <meshStandardMaterial 
           ref={materialRef}
-          color="#6b4f0b" // Darker "Blood Gold"
+          color="#6b4f0b" 
           roughness={0.65} 
           metalness={0.45} 
-          emissive="#331100" // Deeper red-tinted glow
+          emissive="#331100" 
           emissiveIntensity={0.2}
         />
       </mesh>
@@ -104,7 +103,6 @@ const CursedLighting = () => {
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
-      // Slower, heavier throb instead of fast flickering
       lightRef.current.intensity = 100 + Math.random() * 5 + Math.sin(t * 3) * 25;
     }
   });
@@ -113,7 +111,6 @@ const CursedLighting = () => {
     <>
       <ambientLight intensity={0.03} />
       
-      {/* Hellish Underglow - Slower throb */}
       <pointLight 
         ref={lightRef}
         position={[0, -6, 4]} 
@@ -123,7 +120,6 @@ const CursedLighting = () => {
         decay={2} 
       />
 
-      {/* Main Menacing Spot - Intensified for sharp definition */}
       <spotLight 
         position={[10, 15, 10]} 
         intensity={550} 
@@ -133,14 +129,12 @@ const CursedLighting = () => {
         castShadow 
       />
 
-      {/* Back Rim - Intensified Deep Amber */}
       <pointLight 
         position={[-8, 4, -8]} 
         intensity={140} 
         color="#ff6600" 
       />
       
-      {/* Side definition - Intensified */}
       <directionalLight position={[-5, 0, 5]} intensity={1.2} color="#442200" />
     </>
   );
@@ -163,7 +157,7 @@ const WheelViewer = ({
 }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
-      <div className="w-full h-[600px] bg-transparent rounded-xl overflow-hidden my-8 relative group pointer-events-none">
+      <div className="w-full h-[600px] bg-transparent overflow-hidden my-8 relative pointer-events-none">
         <Canvas 
           shadows 
           camera={{ position: cameraPosition, fov: fov }}
@@ -172,7 +166,8 @@ const WheelViewer = ({
             alpha: true, 
             powerPreference: "high-performance",
             toneMapping: THREE.ReinhardToneMapping,
-            toneMappingExposure: 1.5
+            toneMappingExposure: 1.5,
+            premultipliedAlpha: false
           }}
         >
           <Suspense fallback={<Loader />}>
@@ -185,24 +180,9 @@ const WheelViewer = ({
               scale={scale} 
             />
 
-            <ContactShadows 
-              position={[0, -2.8, 0]} 
-              opacity={0.9} 
-              scale={15} 
-              blur={2} 
-              far={10} 
-              color="#000000"
-            />
-            
             <Environment preset="night" />
           </Suspense>
         </Canvas>
-        
-        {/* Deep Cursed Domain Vignette */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
-        
-        {/* Subtle scanning line effect (optional but adds to the domain vibe) */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
       </div>
     </ThreeErrorBoundary>
   );
