@@ -44,28 +44,27 @@ interface WheelProps {
 const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
   const rawGeometry = useLoader(STLLoader, url);
   const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<THREE.MeshStandardMaterial>(null);
   
-  // Process geometry to be smooth instead of faceted/boxy
   const geometry = useMemo(() => {
     if (!rawGeometry) return null;
-    
     try {
-      // STL files usually have duplicate vertices for every face (flat shading).
-      // Merging them allows Three.js to calculate smooth vertex normals.
       const merged = mergeVertices(rawGeometry);
       merged.computeVertexNormals();
       return merged;
     } catch (e) {
-      console.error("Error smoothing geometry:", e);
       return rawGeometry;
     }
   }, [rawGeometry]);
   
-  // Slow, heavy rotation for a menacing feel
   useFrame((state) => {
+    const t = state.clock.getElapsedTime();
     if (meshRef.current) {
-      // Gentle floating motion + continuous rotation
-      meshRef.current.rotation.z += 0.003;
+      meshRef.current.rotation.z += 0.002; // Slower, heavier rotation
+    }
+    if (materialRef.current) {
+      // Cursed Pulse: The wheel "breathes" with dark energy
+      materialRef.current.emissiveIntensity = 0.2 + Math.sin(t * 1.5) * 0.15;
     }
   });
 
@@ -73,9 +72,9 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
 
   return (
     <Float 
-      speed={1.5} 
-      rotationIntensity={0.2} 
-      floatIntensity={0.5}
+      speed={0.8} 
+      rotationIntensity={0.4} 
+      floatIntensity={0.6}
     >
       <mesh 
         ref={meshRef}
@@ -87,14 +86,63 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
         receiveShadow
       >
         <meshStandardMaterial 
-          color="#8a6712" // Deep, aged gold
-          roughness={0.7} // High roughness for a matte look
-          metalness={0.4} // Slight metalness for depth
-          emissive="#1a0d00"
+          ref={materialRef}
+          color="#6b4f0b" // Darker "Blood Gold"
+          roughness={0.65} 
+          metalness={0.45} 
+          emissive="#331100" // Deeper red-tinted glow
           emissiveIntensity={0.2}
         />
       </mesh>
     </Float>
+  );
+};
+
+const CursedLighting = () => {
+  const lightRef = useRef<THREE.PointLight>(null);
+  
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    if (lightRef.current) {
+      // Unstable Energy: The hellish underglow flickers
+      lightRef.current.intensity = 60 + Math.random() * 15 + Math.sin(t * 10) * 10;
+    }
+  });
+
+  return (
+    <>
+      <ambientLight intensity={0.01} />
+      
+      {/* Hellish Underglow - Flickering */}
+      <pointLight 
+        ref={lightRef}
+        position={[0, -6, 4]} 
+        intensity={70} 
+        color="#ff1100" 
+        distance={25} 
+        decay={2} 
+      />
+
+      {/* Main Menacing Spot - Defines the silhouette */}
+      <spotLight 
+        position={[10, 15, 10]} 
+        intensity={250} 
+        angle={0.25} 
+        penumbra={1} 
+        color="#ffffff" 
+        castShadow 
+      />
+
+      {/* Back Rim - Deep Amber */}
+      <pointLight 
+        position={[-8, 4, -8]} 
+        intensity={40} 
+        color="#ff6600" 
+      />
+      
+      {/* Side definition */}
+      <directionalLight position={[-5, 0, 5]} intensity={0.5} color="#442200" />
+    </>
   );
 };
 
@@ -124,40 +172,11 @@ const WheelViewer = ({
             alpha: true, 
             powerPreference: "high-performance",
             toneMapping: THREE.ReinhardToneMapping,
-            toneMappingExposure: 1.2
+            toneMappingExposure: 1.3
           }}
         >
           <Suspense fallback={<Loader />}>
-            {/* DOMAIN ATMOSPHERE LIGHTING */}
-            
-            {/* Very low ambient light to keep shadows deep */}
-            <ambientLight intensity={0.02} />
-            
-            {/* Cursed Underglow - Softened to avoid harsh hotspots on facets */}
-            <pointLight 
-              position={[0, -5, 4]} 
-              intensity={50} 
-              color="#ff3300" 
-              distance={25} 
-              decay={1.8} 
-            />
-
-            {/* Top Rim Light - High penumbra for soft falloff */}
-            <spotLight 
-              position={[5, 10, 5]} 
-              intensity={120} 
-              angle={0.4} 
-              penumbra={1} 
-              color="#ffffff" 
-              castShadow 
-            />
-
-            {/* Back rim light for silhouette definition */}
-            <pointLight 
-              position={[-5, 2, -5]} 
-              intensity={30} 
-              color="#ffaa00" 
-            />
+            <CursedLighting />
 
             <Wheel 
               url="/wheel_full.stl" 
@@ -168,20 +187,22 @@ const WheelViewer = ({
 
             <ContactShadows 
               position={[0, -2.8, 0]} 
-              opacity={0.8} 
-              scale={12} 
+              opacity={0.9} 
+              scale={15} 
               blur={2} 
               far={10} 
               color="#000000"
             />
             
-            {/* Environment adds subtle reflections to the gold metalness */}
             <Environment preset="night" />
           </Suspense>
         </Canvas>
         
-        {/* Vignette effect overlay to darken the edges of the "domain" */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+        {/* Deep Cursed Domain Vignette */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+        
+        {/* Subtle scanning line effect (optional but adds to the domain vibe) */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
       </div>
     </ThreeErrorBoundary>
   );
