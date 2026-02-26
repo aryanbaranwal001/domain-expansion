@@ -36,23 +36,19 @@ const Loader = () => {
 
 interface WheelProps {
   url: string;
-  orientation: "flat" | "upright" | "side";
+  position: [number, number, number];
+  rotation: [number, number, number];
+  scale: number | [number, number, number];
 }
 
-const Wheel = ({ url, orientation }: WheelProps) => {
+const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
   const geometry = useLoader(STLLoader, url);
   
   if (!geometry) return null;
 
-  const rotations: Record<string, [number, number, number]> = {
-    flat: [0, 0, 0],
-    upright: [Math.PI / 2, 0, 0],
-    side: [0, Math.PI / 2, 0],
-  };
-
   return (
-    <Center top>
-      <mesh geometry={geometry} rotation={rotations[orientation]} castShadow receiveShadow>
+    <Center top position={position} rotation={rotation}>
+      <mesh geometry={geometry} scale={scale} castShadow receiveShadow>
         <meshStandardMaterial 
           color="#D4AF37" 
           roughness={1} 
@@ -64,16 +60,26 @@ const Wheel = ({ url, orientation }: WheelProps) => {
 };
 
 interface WheelViewerProps {
-  orientation?: "flat" | "upright" | "side";
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number | [number, number, number];
+  cameraPosition?: [number, number, number];
+  fov?: number;
 }
 
-const WheelViewer = ({ orientation = "flat" }: WheelViewerProps) => {
+const WheelViewer = ({ 
+  position = [0, 0, 0], 
+  rotation = [0, 0, 0], 
+  scale = 1,
+  cameraPosition = [8, 8, 8],
+  fov = 35
+}: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
       <div className="w-full h-[600px] bg-transparent rounded-xl overflow-hidden my-8 relative group">
         <Canvas 
           shadows 
-          camera={{ position: [8, 8, 8], fov: 35 }}
+          camera={{ position: cameraPosition, fov: fov }}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         >
           <Suspense fallback={<Loader />}>
@@ -83,7 +89,12 @@ const WheelViewer = ({ orientation = "flat" }: WheelViewerProps) => {
               contactShadow={{ opacity: 0.5, blur: 2.5 }}
               adjustCamera={1.2}
             >
-              <Wheel url="/wheel_full.stl" orientation={orientation} />
+              <Wheel 
+                url="/wheel_full.stl" 
+                position={position} 
+                rotation={rotation} 
+                scale={scale} 
+              />
             </Stage>
             <OrbitControls 
               makeDefault 
