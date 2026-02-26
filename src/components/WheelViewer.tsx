@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { STLLoader } from "three-stdlib";
 import { OrbitControls, Stage, Center, Html } from "@react-three/drei";
@@ -14,16 +14,10 @@ class ThreeErrorBoundary extends React.Component<{ children: React.ReactNode }, 
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
-    console.error("Three.js Rendering Error:", error, errorInfo);
-  }
-
   render() {
     if (this.state.hasError) {
       return (
-        <div className="w-full h-[400px] flex items-center justify-center bg-transparent border border-dashed border-slate-300 rounded-xl">
-          <p className="text-slate-500 text-sm">3D Preview Unavailable</p>
-        </div>
+        <div className="w-full h-[400px] flex items-center justify-center bg-transparent border border-dashed border-slate-300 rounded-xl" />
       );
     }
     return this.props.children;
@@ -33,9 +27,8 @@ class ThreeErrorBoundary extends React.Component<{ children: React.ReactNode }, 
 const Loader = () => {
   return (
     <Html center>
-      <div className="flex flex-col items-center justify-center text-amber-600 bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 min-w-[200px]">
-        <div className="w-10 h-10 border-4 border-amber-200/30 border-t-amber-500 rounded-full animate-spin mb-4"></div>
-        <p className="text-sm font-semibold">Forging Gold...</p>
+      <div className="flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-slate-200 border-t-amber-500 rounded-full animate-spin"></div>
       </div>
     </Html>
   );
@@ -51,7 +44,6 @@ const Wheel = ({ url, orientation }: WheelProps) => {
   
   if (!geometry) return null;
 
-  // Define rotations based on orientation
   const rotations: Record<string, [number, number, number]> = {
     flat: [0, 0, 0],
     upright: [Math.PI / 2, 0, 0],
@@ -71,34 +63,14 @@ const Wheel = ({ url, orientation }: WheelProps) => {
   );
 };
 
-const WheelViewer = () => {
-  const [orientation, setOrientation] = useState<"flat" | "upright" | "side">("flat");
+interface WheelViewerProps {
+  orientation?: "flat" | "upright" | "side";
+}
 
+const WheelViewer = ({ orientation = "flat" }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
       <div className="w-full h-[600px] bg-transparent rounded-xl overflow-hidden my-8 relative group">
-        <div className="absolute top-4 left-4 z-10 pointer-events-none">
-          <h3 className="text-foreground font-bold text-xl tracking-tight">Golden Wheel</h3>
-          <p className="text-muted-foreground text-xs font-medium">Matte Finish • Interactive 3D View</p>
-        </div>
-
-        {/* Orientation Controls */}
-        <div className="absolute top-4 right-4 z-20 flex gap-2">
-          {(["flat", "upright", "side"] as const).map((opt) => (
-            <button
-              key={opt}
-              onClick={() => setOrientation(opt)}
-              className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full transition-all border ${
-                orientation === opt
-                  ? "bg-amber-600 text-white border-amber-500 shadow-lg scale-105"
-                  : "bg-white/10 text-slate-400 border-white/10 hover:bg-white/20 backdrop-blur-sm"
-              }`}
-            >
-              {opt}
-            </button>
-          ))}
-        </div>
-        
         <Canvas 
           shadows 
           camera={{ position: [8, 8, 8], fov: 35 }}
@@ -123,11 +95,6 @@ const WheelViewer = () => {
             />
           </Suspense>
         </Canvas>
-
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-slate-400 text-[10px] flex gap-6 opacity-40 group-hover:opacity-100 transition-opacity">
-          <span>DRAG TO ROTATE</span>
-          <span>SCROLL TO ZOOM</span>
-        </div>
       </div>
     </ThreeErrorBoundary>
   );
