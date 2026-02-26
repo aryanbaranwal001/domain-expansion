@@ -1,10 +1,14 @@
 import React, { Suspense, lazy } from "react";
+import { theme } from "@/lib/theme";
 
 const WheelViewer = lazy(() => import("./WheelViewer"));
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden px-6 pt-24 pb-24 md:pb-32">
+    <section 
+      className="relative min-h-screen flex flex-col items-center overflow-hidden px-6 pt-24 pb-24 md:pb-32"
+      style={{ backgroundColor: "transparent" }}
+    >
       <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center">
         {/* Wheel Section */}
         <div className="w-full mb-4">
@@ -16,12 +20,13 @@ const HeroSection = () => {
         {/* Text Section */}
         <div className="w-full max-w-3xl flex flex-col items-center -mt-28">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-            Aryan <span className="text-primary glow-text">Baranwal</span>
+            <span style={{ color: theme.primary }} className="glow-text">Aryan</span>{" "}
+            <span className="text-foreground/90 opacity-80 font-medium">Baranwal</span>
           </h1>
 
-          <p className="font-mono text-sm text-primary/60 mt-3 opacity-0 animate-fade-in-delay-2 group cursor-default">
+          <p className="font-mono text-sm mt-3 opacity-0 animate-fade-in-delay-2 group cursor-default" style={{ color: `${theme.primary}99` }}>
             aka{" "}
-            <span className="text-primary/40 group-hover:text-primary transition-colors duration-700">
+            <span className="transition-colors duration-700" style={{ color: `${theme.primary}66` }}>
               0x_Mahoraga
             </span>
           </p>
@@ -43,7 +48,11 @@ const HeroSection = () => {
                 e.preventDefault();
                 document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:shadow-[0_0_25px_hsl(var(--primary)/0.3)] transition-all duration-300"
+              className="px-5 py-2.5 text-primary-foreground text-sm font-medium rounded-md transition-all duration-300"
+              style={{ 
+                backgroundColor: theme.primary,
+                boxShadow: `0 0 25px ${theme.primary}4D` 
+              }}
             >
               View Work
             </a>
@@ -53,7 +62,8 @@ const HeroSection = () => {
                 e.preventDefault();
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-5 py-2.5 border border-border text-sm font-medium rounded-md text-secondary-foreground hover:border-primary/30 hover:text-primary transition-all duration-300"
+              className="px-5 py-2.5 border border-border text-sm font-medium rounded-md text-secondary-foreground hover:text-primary transition-all duration-300"
+              style={{ borderColor: `${theme.border}` }}
             >
               Get in Touch
             </a>
