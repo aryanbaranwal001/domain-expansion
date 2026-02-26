@@ -105,19 +105,19 @@ const CursedLighting = () => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
       // Slower, heavier throb instead of fast flickering
-      lightRef.current.intensity = 80 + Math.random() * 5 + Math.sin(t * 3) * 20;
+      lightRef.current.intensity = 100 + Math.random() * 5 + Math.sin(t * 3) * 25;
     }
   });
 
   return (
     <>
-      <ambientLight intensity={0.015} />
+      <ambientLight intensity={0.03} />
       
       {/* Hellish Underglow - Slower throb */}
       <pointLight 
         ref={lightRef}
         position={[0, -6, 4]} 
-        intensity={80} 
+        intensity={100} 
         color="#ff1100" 
         distance={25} 
         decay={2} 
@@ -126,7 +126,7 @@ const CursedLighting = () => {
       {/* Main Menacing Spot - Intensified for sharp definition */}
       <spotLight 
         position={[10, 15, 10]} 
-        intensity={400} 
+        intensity={550} 
         angle={0.25} 
         penumbra={1} 
         color="#ffffff" 
@@ -136,12 +136,12 @@ const CursedLighting = () => {
       {/* Back Rim - Intensified Deep Amber */}
       <pointLight 
         position={[-8, 4, -8]} 
-        intensity={100} 
+        intensity={140} 
         color="#ff6600" 
       />
       
       {/* Side definition - Intensified */}
-      <directionalLight position={[-5, 0, 5]} intensity={0.8} color="#442200" />
+      <directionalLight position={[-5, 0, 5]} intensity={1.2} color="#442200" />
     </>
   );
 };
@@ -157,7 +157,7 @@ interface WheelViewerProps {
 const WheelViewer = ({ 
   position = [0, 0, 0], 
   rotation = [1.02, 0, 0], 
-  scale = 0.03,
+  scale = 0.04,
   cameraPosition = [0, 0, 10],
   fov = 35
 }: WheelViewerProps) => {
@@ -172,7 +172,7 @@ const WheelViewer = ({
             alpha: true, 
             powerPreference: "high-performance",
             toneMapping: THREE.ReinhardToneMapping,
-            toneMappingExposure: 1.3
+            toneMappingExposure: 1.5
           }}
         >
           <Suspense fallback={<Loader />}>
@@ -209,4 +209,3 @@ const WheelViewer = ({
 };
 
 export default WheelViewer;
-
