@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { STLLoader } from "three-stdlib";
-import { OrbitControls, Html, Environment, ContactShadows } from "@react-three/drei";
+import { Html, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 
 class ThreeErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
@@ -81,7 +81,7 @@ const WheelViewer = ({
 }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
-      <div className="w-full h-[600px] bg-transparent rounded-xl overflow-hidden my-8 relative group">
+      <div className="w-full h-[600px] bg-transparent rounded-xl overflow-hidden my-8 relative group pointer-events-none">
         <Canvas 
           shadows 
           camera={{ position: cameraPosition, fov: fov }}
@@ -107,13 +107,6 @@ const WheelViewer = ({
               scale={10} 
               blur={2} 
               far={4.5} 
-            />
-
-            <OrbitControls 
-              makeDefault 
-              autoRotate={false}
-              enableDamping
-              dampingFactor={0.05}
             />
           </Suspense>
         </Canvas>
