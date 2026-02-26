@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import MahoragaWheel from "./MahoragaWheel";
 
 const ProjectsSection = () => {
   return (
@@ -10,11 +9,6 @@ const ProjectsSection = () => {
 
         {/* Featured project */}
         <div className="relative p-8 rounded-xl border border-border gradient-card cursed-glow overflow-hidden">
-          {/* Background wheel */}
-          <div className="absolute -right-20 -bottom-20 opacity-30 pointer-events-none">
-            <MahoragaWheel size={250} className="mahoraga-wheel-fast" />
-          </div>
-
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
               <span className="px-2 py-0.5 text-xs font-mono rounded bg-primary/10 text-primary border border-primary/20">
