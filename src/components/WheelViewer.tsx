@@ -28,7 +28,7 @@ const Loader = () => {
   return (
     <Html center>
       <div className="flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-slate-200 border-t-amber-500 rounded-full animate-spin"></div>
+        <div className="w-6 h-6 border-2 border-slate-800 border-t-amber-900 rounded-full animate-spin"></div>
       </div>
     </Html>
   );
@@ -56,9 +56,11 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
       receiveShadow
     >
       <meshStandardMaterial 
-        color="#D4AF37" 
-        roughness={1} 
-        metalness={0} 
+        color="#8B6508" 
+        roughness={0.7} 
+        metalness={0.3} 
+        emissive="#221100"
+        emissiveIntensity={0.1}
       />
     </mesh>
   );
@@ -88,12 +90,26 @@ const WheelViewer = ({
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         >
           <Suspense fallback={<Loader />}>
-            {/* Manual Lighting Setup */}
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} castShadow />
-            <directionalLight position={[-10, 10, 5]} intensity={0.8} />
-            <Environment preset="city" />
+            {/* Moody JJK-style Lighting */}
+            <ambientLight intensity={0.05} />
             
+            {/* Underglow - Deep Amber */}
+            <pointLight position={[0, -5, 2]} intensity={12} color="#ffaa00" distance={15} decay={2} />
+            
+            {/* Front dramatic light */}
+            <spotLight 
+              position={[0, 5, 10]} 
+              intensity={20} 
+              angle={0.4} 
+              penumbra={1} 
+              color="#ffffff" 
+              castShadow 
+              shadow-mapSize={[1024, 1024]}
+            />
+            
+            {/* Subtle side fill to keep geometry visible */}
+            <directionalLight position={[-5, 2, 2]} intensity={0.5} color="#4444ff" />
+
             <Wheel 
               url="/wheel_full.stl" 
               position={position} 
@@ -102,11 +118,12 @@ const WheelViewer = ({
             />
 
             <ContactShadows 
-              position={[0, -2, 0]} 
-              opacity={0.4} 
-              scale={10} 
-              blur={2} 
-              far={4.5} 
+              position={[0, -2.5, 0]} 
+              opacity={0.8} 
+              scale={15} 
+              blur={1.5} 
+              far={5} 
+              color="#000000"
             />
           </Suspense>
         </Canvas>
