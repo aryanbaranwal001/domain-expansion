@@ -43,7 +43,7 @@ const HeroSection = () => {
                 e.preventDefault();
                 document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:shadow-[0_0_25px_hsl(172_66%_50%/0.3)] transition-all duration-300"
+              className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:shadow-[0_0_25px_hsl(var(--primary)/0.3)] transition-all duration-300"
             >
               View Work
             </a>

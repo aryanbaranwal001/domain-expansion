@@ -22,7 +22,7 @@ const SkillsSection = () => {
               key={label}
               className="group p-5 rounded-lg border border-border gradient-card cursed-glow transition-all duration-500"
             >
-              <Icon className="w-5 h-5 text-primary mb-3 group-hover:drop-shadow-[0_0_8px_hsl(172_66%_50%/0.5)] transition-all duration-500" />
+              <Icon className="w-5 h-5 text-primary mb-3 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)] transition-all duration-500" />
               <h4 className="text-sm font-semibold mb-1">{label}</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
             </div>
