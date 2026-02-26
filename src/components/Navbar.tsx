@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import profileImg from "@/assets/profile.png";
 
 const navItems = ["about", "skills", "projects", "contact"];
 
@@ -22,8 +24,15 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-mono text-sm text-primary tracking-wider hover:glow-text transition-all">
-          mahoraga_
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
+          className="flex items-center gap-2 font-mono text-sm text-primary tracking-wider hover:glow-text transition-all"
+        >
+          <Avatar className="h-6 w-6 border border-primary/20">
+            <AvatarImage src={profileImg} alt="Mahoraga" />
+            <AvatarFallback>M</AvatarFallback>
+          </Avatar>
+          mahoraga
         </button>
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
