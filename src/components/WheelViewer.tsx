@@ -105,7 +105,7 @@ const CursedLighting = () => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
       // Slower, heavier throb instead of fast flickering
-      lightRef.current.intensity = 80 + Math.random() * 5 + Math.sin(t * 3) * 15;
+      lightRef.current.intensity = 85 + Math.random() * 5 + Math.sin(t * 3) * 15;
     }
   });
 
