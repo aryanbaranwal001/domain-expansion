@@ -104,44 +104,44 @@ const CursedLighting = () => {
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
-      // Unstable Energy: The hellish underglow flickers
-      lightRef.current.intensity = 60 + Math.random() * 15 + Math.sin(t * 10) * 10;
+      // Slower, heavier throb instead of fast flickering
+      lightRef.current.intensity = 80 + Math.random() * 5 + Math.sin(t * 3) * 20;
     }
   });
 
   return (
     <>
-      <ambientLight intensity={0.01} />
+      <ambientLight intensity={0.015} />
       
-      {/* Hellish Underglow - Flickering */}
+      {/* Hellish Underglow - Slower throb */}
       <pointLight 
         ref={lightRef}
         position={[0, -6, 4]} 
-        intensity={70} 
+        intensity={80} 
         color="#ff1100" 
         distance={25} 
         decay={2} 
       />
 
-      {/* Main Menacing Spot - Defines the silhouette */}
+      {/* Main Menacing Spot - Intensified for sharp definition */}
       <spotLight 
         position={[10, 15, 10]} 
-        intensity={250} 
+        intensity={400} 
         angle={0.25} 
         penumbra={1} 
         color="#ffffff" 
         castShadow 
       />
 
-      {/* Back Rim - Deep Amber */}
+      {/* Back Rim - Intensified Deep Amber */}
       <pointLight 
         position={[-8, 4, -8]} 
-        intensity={40} 
+        intensity={100} 
         color="#ff6600" 
       />
       
-      {/* Side definition */}
-      <directionalLight position={[-5, 0, 5]} intensity={0.5} color="#442200" />
+      {/* Side definition - Intensified */}
+      <directionalLight position={[-5, 0, 5]} intensity={0.8} color="#442200" />
     </>
   );
 };
