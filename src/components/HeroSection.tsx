@@ -1,9 +1,20 @@
+import React, { Suspense, lazy } from "react";
+
+const WheelViewer = lazy(() => import("./WheelViewer"));
+
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 pb-24 md:pb-32">
-      <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center pt-12">
-        {/* Text */}
-        <div className="w-full max-w-3xl flex flex-col items-center">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden px-6 pt-24 pb-24 md:pb-32">
+      <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center">
+        {/* Wheel Section */}
+        <div className="w-full mb-4">
+          <Suspense fallback={<div className="w-full h-[400px] animate-pulse bg-slate-900/20 rounded-xl" />}>
+            <WheelViewer scale={0.035} />
+          </Suspense>
+        </div>
+
+        {/* Text Section */}
+        <div className="w-full max-w-3xl flex flex-col items-center -mt-12">
           <p className="font-mono text-sm text-muted-foreground opacity-0 animate-fade-in mb-2">
             // hello, world
           </p>
