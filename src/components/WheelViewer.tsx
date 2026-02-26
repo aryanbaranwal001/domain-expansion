@@ -87,7 +87,7 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
       >
         <meshStandardMaterial 
           ref={materialRef}
-          color="#966c06" 
+          color="#8f6601" 
           roughness={0.65} 
           metalness={0.45} 
           emissive="#331100" 
