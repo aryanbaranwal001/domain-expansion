@@ -1,6 +1,6 @@
 import React, { Suspense, useRef, useMemo } from "react";
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
-import { STLLoader, BufferGeometryUtils } from "three-stdlib";
+import { STLLoader, mergeVertices } from "three-stdlib";
 import { Html, Environment, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -49,11 +49,16 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
   const geometry = useMemo(() => {
     if (!rawGeometry) return null;
     
-    // STL files usually have duplicate vertices for every face (flat shading).
-    // Merging them allows Three.js to calculate smooth vertex normals.
-    const merged = BufferGeometryUtils.mergeVertices(rawGeometry);
-    merged.computeVertexNormals();
-    return merged;
+    try {
+      // STL files usually have duplicate vertices for every face (flat shading).
+      // Merging them allows Three.js to calculate smooth vertex normals.
+      const merged = mergeVertices(rawGeometry);
+      merged.computeVertexNormals();
+      return merged;
+    } catch (e) {
+      console.error("Error smoothing geometry:", e);
+      return rawGeometry;
+    }
   }, [rawGeometry]);
   
   // Slow, heavy rotation for a menacing feel
@@ -84,7 +89,7 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
         <meshStandardMaterial 
           color="#8a6712" // Deep, aged gold
           roughness={0.7} // High roughness for a matte look
-          metalness={0.5} // Balanced metalness to avoid boxy specular highlights
+          metalness={0.4} // Slight metalness for depth
           emissive="#1a0d00"
           emissiveIntensity={0.2}
         />
