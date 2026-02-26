@@ -1,6 +1,6 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useMemo } from "react";
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
-import { STLLoader } from "three-stdlib";
+import { STLLoader, BufferGeometryUtils } from "three-stdlib";
 import { Html, Environment, ContactShadows, Float } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -42,8 +42,19 @@ interface WheelProps {
 }
 
 const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
-  const geometry = useLoader(STLLoader, url);
+  const rawGeometry = useLoader(STLLoader, url);
   const meshRef = useRef<THREE.Mesh>(null);
+  
+  // Process geometry to be smooth instead of faceted/boxy
+  const geometry = useMemo(() => {
+    if (!rawGeometry) return null;
+    
+    // STL files usually have duplicate vertices for every face (flat shading).
+    // Merging them allows Three.js to calculate smooth vertex normals.
+    const merged = BufferGeometryUtils.mergeVertices(rawGeometry);
+    merged.computeVertexNormals();
+    return merged;
+  }, [rawGeometry]);
   
   // Slow, heavy rotation for a menacing feel
   useFrame((state) => {
@@ -71,10 +82,10 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
         receiveShadow
       >
         <meshStandardMaterial 
-          color="#926c15" // Aged, deeper gold
-          roughness={0.25} 
-          metalness={0.85} 
-          emissive="#221100"
+          color="#8a6712" // Deep, aged gold
+          roughness={0.7} // High roughness for a matte look
+          metalness={0.5} // Balanced metalness to avoid boxy specular highlights
+          emissive="#1a0d00"
           emissiveIntensity={0.2}
         />
       </mesh>
@@ -117,20 +128,20 @@ const WheelViewer = ({
             {/* Very low ambient light to keep shadows deep */}
             <ambientLight intensity={0.02} />
             
-            {/* Cursed Underglow - Sharp orange/red from beneath */}
+            {/* Cursed Underglow - Softened to avoid harsh hotspots on facets */}
             <pointLight 
-              position={[0, -5, 2]} 
-              intensity={80} 
+              position={[0, -5, 4]} 
+              intensity={50} 
               color="#ff3300" 
-              distance={20} 
-              decay={2} 
+              distance={25} 
+              decay={1.8} 
             />
 
-            {/* Top Rim Light - Cold contrast to the hellish bottom light */}
+            {/* Top Rim Light - High penumbra for soft falloff */}
             <spotLight 
               position={[5, 10, 5]} 
-              intensity={150} 
-              angle={0.3} 
+              intensity={120} 
+              angle={0.4} 
               penumbra={1} 
               color="#ffffff" 
               castShadow 
@@ -139,7 +150,7 @@ const WheelViewer = ({
             {/* Back rim light for silhouette definition */}
             <pointLight 
               position={[-5, 2, -5]} 
-              intensity={40} 
+              intensity={30} 
               color="#ffaa00" 
             />
 
