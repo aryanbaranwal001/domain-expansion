@@ -72,9 +72,9 @@ const Wheel = ({ url, position, rotation, scale }: WheelProps) => {
 
   return (
     <Float 
-      speed={0.8} 
-      rotationIntensity={0.4} 
-      floatIntensity={0.6}
+      speed={0.0} 
+      rotationIntensity={0.0} 
+      floatIntensity={0.0}
     >
       <mesh 
         ref={meshRef}
