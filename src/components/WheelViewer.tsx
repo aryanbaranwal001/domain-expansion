@@ -163,7 +163,7 @@ const WheelViewer = ({
 }: WheelViewerProps) => {
   return (
     <ThreeErrorBoundary>
-      <div className="w-full h-[600px] bg-transparent overflow-hidden my-8 relative pointer-events-none">
+      <div className="w-full h-[600px] bg-transparent overflow-hidden relative pointer-events-none">
         <Canvas 
           shadows 
           camera={{ position: cameraPosition, fov: fov }}
