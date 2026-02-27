@@ -105,7 +105,7 @@ const CursedLighting = () => {
     const t = state.clock.getElapsedTime();
     if (lightRef.current) {
       // Slower, heavier throb instead of fast flickering
-      lightRef.current.intensity = 85 + Math.random() * 5 + Math.sin(t * 3) * 15;
+      lightRef.current.intensity = 80 + Math.sin(t * 3) * 10;
     }
   });
 
@@ -126,11 +126,13 @@ const CursedLighting = () => {
       {/* Main Menacing Spot - Intensified for sharp definition */}
       <spotLight 
         position={[10, 15, 10]} 
-        intensity={450} 
+        intensity={330} 
         angle={0.25} 
         penumbra={1} 
         color="#ffffff" 
         castShadow 
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
       />
 
       {/* Back Rim - Intensified Deep Amber */}
