@@ -92,8 +92,8 @@ const Index = () => {
     custom={2}
     variants={fadeUp}
   >
-    Building <span className="text-foreground">high-throughput distributed systems</span> and blockchain infrastructure.
-    Focused on performance-driven design, fault-tolerant architecture, and developer tooling.
+    Building high-performance, scalable backend systems and 
+    blockchain infrastructure that actually make real-world impact.
   </motion.p>
 
   <motion.p
@@ -103,7 +103,7 @@ const Index = () => {
     custom={3}
     variants={fadeUp}
   >
-    Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>.
+    Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>
   </motion.p>
 
   {/* Original Button Design */}
