@@ -8,7 +8,6 @@ import {
   SiDocker,
   SiNeovim,
 } from "react-icons/si";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const techStack = [
   { name: "Rust", icon: SiRust },
@@ -21,47 +20,40 @@ const techStack = [
   { name: "Neovim", icon: SiNeovim },
 ];
 
-const TechCapsule = ({ tech, index }: { tech: typeof techStack[0]; index: number }) => (
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <motion.div
-        className="inline-flex flex-col items-center gap-2 mx-4 px-5 py-3 rounded-sm border border-border bg-card/30 cursor-default shrink-0"
-        whileHover={{
-          y: -4,
-          borderColor: "hsl(32, 100%, 55%)",
-          boxShadow: "0 0 20px -5px hsla(32, 100%, 55%, 0.2)",
-        }}
-        transition={{ duration: 0.2 }}
-      >
-        {tech.icon ? (
-          <tech.icon className="w-5 h-5 text-muted-foreground" />
-        ) : (
-          <span className="w-5 h-5 flex items-center justify-center text-[10px] font-mono font-bold text-muted-foreground">
-            gR
-          </span>
-        )}
-        <span className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">
-          {tech.name}
-        </span>
-      </motion.div>
-    </TooltipTrigger>
-    <TooltipContent side="bottom" className="text-xs font-mono">
-      {tech.name}
-    </TooltipContent>
-  </Tooltip>
-);
-
 const TechStrip = () => {
-  const doubled = [...techStack, ...techStack];
+  const doubled = [...techStack, ...techStack, ...techStack];
 
   return (
-    <div className="overflow-hidden py-8 border-y border-border relative">
-      <div className="flex animate-scroll-left whitespace-nowrap">
-        {doubled.map((tech, i) => (
-          <TechCapsule key={i} tech={tech} index={i} />
-        ))}
+    <section className="container mx-auto px-6 py-12">
+      <div className="relative max-w-5xl mx-auto border-y border-border/50 py-10 overflow-hidden group">
+        {/* Gradient Masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
+
+        <div className="flex animate-scroll-left whitespace-nowrap items-center">
+          {doubled.map((tech, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-4 mx-10 group/item transition-all duration-300"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover/item:opacity-100 transition-opacity duration-500" />
+                {tech.icon ? (
+                  <tech.icon className="w-6 h-6 text-muted-foreground/60 group-hover/item:text-primary transition-all duration-300 relative z-10" />
+                ) : (
+                  <span className="w-6 h-6 flex items-center justify-center text-[10px] font-mono font-bold text-muted-foreground/60 group-hover/item:text-primary relative z-10">
+                    gRPC
+                  </span>
+                )}
+              </div>
+              <span className="text-[11px] font-mono text-muted-foreground/50 tracking-[0.2em] uppercase group-hover/item:text-foreground group-hover/item:tracking-[0.3em] transition-all duration-500">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
