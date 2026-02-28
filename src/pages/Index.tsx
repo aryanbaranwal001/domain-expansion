@@ -52,58 +52,72 @@ const Index = () => {
     <div className="min-h-screen pt-14 relative z-10">
       {/* Hero */}
       <section className="container mx-auto px-6 pt-24 pb-20">
-        <div className="max-w-2xl">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+          <div className="max-w-2xl">
+            <motion.h1
+              className="text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6"
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              variants={fadeUp}
+            >
+              Hi, I am Aryan Baranwal <br />
+              <span className="text-primary font-mono text-2xl md:text-3xl">aka 0x_Mahoraga</span>
+            </motion.h1>
 
-          <motion.h1
-            className="text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6"
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            variants={fadeUp}
-          >
-            Aryan Baranwal
-          </motion.h1>
+            <motion.p
+              className="text-base text-muted-foreground leading-relaxed mb-4 max-w-xl"
+              initial="hidden"
+              animate="visible"
+              custom={2}
+              variants={fadeUp}
+            >
+              Building high-throughput distributed systems and blockchain infrastructure.
+              Focused on performance-driven design, fault-tolerant architecture, and developer tooling.
+            </motion.p>
 
-          <motion.p
-            className="text-base text-muted-foreground leading-relaxed mb-4 max-w-xl"
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            variants={fadeUp}
-          >
-            Building high-throughput distributed systems and blockchain infrastructure.
-            Focused on performance-driven design, fault-tolerant architecture, and developer tooling.
-          </motion.p>
+            <motion.p
+              className="text-sm text-muted-foreground mb-10"
+              initial="hidden"
+              animate="visible"
+              custom={3}
+              variants={fadeUp}
+            >
+              Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>.
+            </motion.p>
 
-          <motion.p
-            className="text-sm text-muted-foreground mb-10"
-            initial="hidden"
-            animate="visible"
-            custom={3}
-            variants={fadeUp}
-          >
-            Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>.
-          </motion.p>
-
+            <motion.div
+              className="flex items-center gap-3"
+              initial="hidden"
+              animate="visible"
+              custom={4}
+              variants={fadeUp}
+            >
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
+              >
+                View Projects <ArrowRight className="w-3 h-3" />
+              </Link>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
+              >
+                Contact
+              </a>
+            </motion.div>
+          </div>
           <motion.div
-            className="flex items-center gap-3"
-            initial="hidden"
-            animate="visible"
-            custom={4}
-            variants={fadeUp}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex-shrink-0"
           >
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
-            >
-              View Projects <ArrowRight className="w-3 h-3" />
-            </Link>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
-            >
-              Contact
-            </a>
+            <img 
+              src="/mahoraga.png" 
+              alt="Aryan Baranwal" 
+              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/20 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
+            />
           </motion.div>
         </div>
       </section>
