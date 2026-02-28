@@ -53,60 +53,83 @@ const Index = () => {
       {/* Hero */}
       <section className="container mx-auto px-6 pt-24 pb-20">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
-          <div className="max-w-2xl">
-            <motion.h1
-              className="text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6"
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              variants={fadeUp}
-            >
-              Hi, I am Aryan Baranwal <br />
-              <span className="text-primary font-mono text-2xl md:text-3xl">aka 0x_Mahoraga</span>
-            </motion.h1>
+          
+          
+<div className="max-w-3xl py-12">
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    custom={1}
+    variants={fadeUp}
+    className="mb-8"
+  >
+    {/* The Greeting */}
+    <span className="text-muted-foreground font-light text-xl md:text-2xl block mb-2">
+      Hi there, I'm
+    </span>
+    
+    {/* The Name - Proudly Displayed */}
+    <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary leading-none mb-4">
+      Aryan Baranwal
+    </h1>
 
-            <motion.p
-              className="text-base text-muted-foreground leading-relaxed mb-4 max-w-xl"
-              initial="hidden"
-              animate="visible"
-              custom={2}
-              variants={fadeUp}
-            >
-              Building high-throughput distributed systems and blockchain infrastructure.
-              Focused on performance-driven design, fault-tolerant architecture, and developer tooling.
-            </motion.p>
+    {/* The Handle Section */}
+    <div className="flex items-baseline gap-3">
+      <span className="text-lg italic font-serif text-muted-foreground/60">
+        aka
+      </span>
+      <span className="text-2xl md:text-3xl font-mono font-medium text-foreground tracking-tight">
+        0x_Mahoraga
+      </span>
+    </div>
+  </motion.div>
 
-            <motion.p
-              className="text-sm text-muted-foreground mb-10"
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              variants={fadeUp}
-            >
-              Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>.
-            </motion.p>
+  {/* Description */}
+  <motion.p
+    className="text-base text-muted-foreground leading-relaxed mb-4 max-w-xl"
+    initial="hidden"
+    animate="visible"
+    custom={2}
+    variants={fadeUp}
+  >
+    Building <span className="text-foreground">high-throughput distributed systems</span> and blockchain infrastructure.
+    Focused on performance-driven design, fault-tolerant architecture, and developer tooling.
+  </motion.p>
 
-            <motion.div
-              className="flex items-center gap-3"
-              initial="hidden"
-              animate="visible"
-              custom={4}
-              variants={fadeUp}
-            >
-              <Link
-                to="/projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
-              >
-                View Projects <ArrowRight className="w-3 h-3" />
-              </Link>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
-              >
-                Contact
-              </a>
-            </motion.div>
-          </div>
+  <motion.p
+    className="text-sm text-muted-foreground mb-10"
+    initial="hidden"
+    animate="visible"
+    custom={3}
+    variants={fadeUp}
+  >
+    Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>.
+  </motion.p>
+
+  {/* Original Button Design */}
+  <motion.div
+    className="flex items-center gap-3"
+    initial="hidden"
+    animate="visible"
+    custom={4}
+    variants={fadeUp}
+  >
+    <Link
+      to="/projects"
+      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
+    >
+      View Projects <ArrowRight className="w-3 h-3" />
+    </Link>
+    <a
+      href="#contact"
+      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
+    >
+      Contact
+    </a>
+  </motion.div>
+</div>
+
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
