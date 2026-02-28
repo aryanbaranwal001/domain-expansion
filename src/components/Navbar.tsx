@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-14 px-6">
         <Link to="/" className="font-mono text-sm font-medium text-foreground tracking-tight">
-          aryan<span className="text-primary">.</span>dev
+          0x_Mahoraga
         </Link>
         <div className="flex items-center gap-1">
           {navItems.map((item) => (

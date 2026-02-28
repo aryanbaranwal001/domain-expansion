@@ -53,18 +53,6 @@ const Index = () => {
       {/* Hero */}
       <section className="container mx-auto px-6 pt-24 pb-20">
         <div className="max-w-2xl">
-          <motion.div
-            className="flex items-center gap-2 mb-6"
-            initial="hidden"
-            animate="visible"
-            custom={0}
-            variants={fadeUp}
-          >
-            <Terminal className="w-3.5 h-3.5 text-primary" />
-            <p className="text-xs font-mono text-primary tracking-widest uppercase">
-              Systems Engineer
-            </p>
-          </motion.div>
 
           <motion.h1
             className="text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6"
