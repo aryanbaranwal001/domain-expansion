@@ -52,10 +52,10 @@ const Index = () => {
     <div className="min-h-screen pt-14 relative z-10">
       {/* Hero */}
       <section className="container mx-auto px-6 pt-24 pb-20">
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           
           
-<div className="max-w-3xl py-12">
+<div className="max-w-3xl">
   <motion.div
     initial="hidden"
     animate="visible"
