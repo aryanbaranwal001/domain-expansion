@@ -142,17 +142,20 @@ const Index = () => {
         <div className="flex-grow flex flex-col items-center justify-center pb-8">
           <motion.button
             onClick={scrollToBuilding}
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-            <span className="text-[10px] font-mono">What I'm locked into</span>
             <motion.div
+              className="flex flex-col items-center gap-2"
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <ChevronDown className="w-4 h-4" />
+              <span className="text-md font-sans opacity-70 group-hover:opacity-100 transition-opacity">
+                What I'm locked into
+              </span>
+              <ChevronDown className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           </motion.button>
         </div>
@@ -160,7 +163,7 @@ const Index = () => {
 
       {/* Currently Doing */}
       <section id="currently-building" className="container mx-auto px-6 py-24 scroll-mt-20">
-        <h2 className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-12">
+        <h2 className="text-[11px] font-sans font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-12 opacity-80">
           // what i'm building
         </h2>
         <div className="grid md:grid-cols-3 gap-4">
@@ -174,7 +177,7 @@ const Index = () => {
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
               <div className={`w-8 h-0.5 mb-4 ${item.accent === "primary" ? "bg-primary" : "bg-secondary"}`} />
-              <p className={`text-[10px] font-mono uppercase tracking-widest mb-3 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
+              <p className={`text-[11px] font-sans font-semibold uppercase tracking-[0.2em] mb-3 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
                 {item.label}
               </p>
               <h3 className="text-sm font-medium text-foreground mb-2">
@@ -187,7 +190,7 @@ const Index = () => {
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-mono px-2 py-0.5 bg-muted rounded-sm text-muted-foreground"
+                    className="text-[10px] font-sans font-medium px-2 py-0.5 bg-muted rounded-sm text-muted-foreground"
                   >
                     {tag}
                   </span>
@@ -201,7 +204,7 @@ const Index = () => {
       {/* Contact */}
       <section id="contact" className="container mx-auto px-6 py-16">
         <div className="terminal-divider mb-16" />
-        <h2 className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-8">
+        <h2 className="text-[11px] font-sans font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-8 opacity-80">
           // connect
         </h2>
         <div className="flex items-center gap-6 flex-wrap">
@@ -211,7 +214,7 @@ const Index = () => {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="flex items-center gap-2 text-xs font-sans font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
               whileHover={{ x: 2 }}
             >
               <s.icon className="w-4 h-4" />
