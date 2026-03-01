@@ -23,17 +23,17 @@ const TechMarquee = () => {
 
   return (
     <section className="py-8 bg-transparent">
-      <div className="max-w-[1180px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="relative flex overflow-hidden">
           {/* Neutral Edge Fades */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
 
           <motion.div
             className="flex whitespace-nowrap"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: 17,
+              duration: 30,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop",
@@ -42,7 +42,7 @@ const TechMarquee = () => {
             {multiStack.map((tech, i) => (
               <div
                 key={i}
-                className="flex items-center gap-4 px-8 py-3 mx-4 rounded-lg bg-transparent border border-zinc-500/30 cursor-default"
+                className="flex items-center gap-4 px-8 py-3 mx-4 rounded-lg bg-transparent border border-border/30 cursor-default"
               >
                 <div className={`text-2xl ${tech.color}`}>
                   {tech.icon ? (

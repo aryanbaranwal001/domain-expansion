@@ -4,44 +4,49 @@
 
 @layer base {
   :root {
-    --background: 210 52% 7%;
-    --foreground: 60 100% 99%;
+    /* 
+     * THEME DEFAULTS
+     * These variables are now populated from src/lib/theme.ts
+     * which acts as the 'struct' for the whole project.
+     */
+    --background: ;
+    --foreground: ;
 
-    --card: 210 72% 14%;
-    --card-foreground: 60 100% 99%;
+    --card: ;
+    --card-foreground: ;
 
-    --popover: 210 52% 7%;
-    --popover-foreground: 60 100% 99%;
+    --popover: ;
+    --popover-foreground: ;
 
-    --primary: 32 100% 55%;
-    --primary-foreground: 210 52% 7%;
+    --primary: ;
+    --primary-foreground: ;
 
-    --secondary: 185 73% 31%;
-    --secondary-foreground: 60 100% 99%;
+    --secondary: ;
+    --secondary-foreground: ;
 
-    --muted: 210 40% 14%;
-    --muted-foreground: 210 20% 55%;
+    --muted: ;
+    --muted-foreground: ;
 
-    --accent: 185 73% 31%;
-    --accent-foreground: 60 100% 99%;
+    --accent: ;
+    --accent-foreground: ;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 100% 99%;
+    --destructive: ;
+    --destructive-foreground: ;
 
-    --border: 210 72% 14%;
-    --input: 210 72% 14%;
-    --ring: 32 100% 55%;
+    --border: ;
+    --input: ;
+    --ring: ;
 
-    --radius: 0.375rem;
+    --radius: ;
 
-    --sidebar-background: 210 52% 7%;
-    --sidebar-foreground: 60 100% 99%;
-    --sidebar-primary: 32 100% 55%;
-    --sidebar-primary-foreground: 210 52% 7%;
-    --sidebar-accent: 210 72% 14%;
-    --sidebar-accent-foreground: 60 100% 99%;
-    --sidebar-border: 210 72% 14%;
-    --sidebar-ring: 32 100% 55%;
+    --sidebar-background: ;
+    --sidebar-foreground: ;
+    --sidebar-primary: ;
+    --sidebar-primary-foreground: ;
+    --sidebar-accent: ;
+    --sidebar-accent-foreground: ;
+    --sidebar-border: ;
+    --sidebar-ring: ;
   }
 }
 
@@ -55,30 +60,30 @@
   }
 
   ::selection {
-    background: hsl(32 100% 55% / 0.25);
+    background: hsl(var(--primary) / 0.25);
   }
 }
 
 @layer components {
   .glow-border {
     @apply border border-border relative;
-    box-shadow: 0 0 20px -5px hsl(32 100% 55% / 0.08);
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.08);
   }
 
   .glow-border:hover {
-    box-shadow: 0 0 30px -5px hsl(32 100% 55% / 0.15);
-    border-color: hsl(32 100% 55% / 0.2);
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.15);
+    border-color: hsl(var(--primary) / 0.2);
   }
 
   .secondary-glow:hover {
-    box-shadow: 0 0 25px -5px hsl(185 73% 31% / 0.15);
-    border-color: hsl(185 73% 31% / 0.25);
+    box-shadow: 0 0 25px -5px hsl(var(--secondary) / 0.15);
+    border-color: hsl(var(--secondary) / 0.25);
   }
 
   .grid-bg {
     background-image: 
-      linear-gradient(hsl(210 72% 14% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(210 72% 14% / 0.5) 1px, transparent 1px);
+      linear-gradient(hsl(var(--card) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--card) / 0.5) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 

@@ -42,6 +42,11 @@ const NetworkBackground = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Get colors from CSS variables
+      const rootStyle = getComputedStyle(document.documentElement);
+      const primaryHSL = rootStyle.getPropertyValue('--primary').trim().split(' ');
+      const secondaryHSL = rootStyle.getPropertyValue('--secondary').trim().split(' ');
+
       // Draw connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -49,8 +54,8 @@ const NetworkBackground = () => {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDistance) {
-            const opacity = (1 - dist / connectionDistance) * 0.08;
-            ctx.strokeStyle = `rgba(23, 126, 137, ${opacity})`;
+            const opacity = (1 - dist / connectionDistance) * 0.15;
+            ctx.strokeStyle = `hsla(${secondaryHSL[0]}, ${secondaryHSL[1]}, ${secondaryHSL[2]}, ${opacity})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -62,7 +67,7 @@ const NetworkBackground = () => {
 
       // Draw nodes
       for (const node of nodes) {
-        ctx.fillStyle = "rgba(255, 159, 28, 0.15)";
+        ctx.fillStyle = `hsla(${primaryHSL[0]}, ${primaryHSL[1]}, ${primaryHSL[2]}, 0.2)`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
