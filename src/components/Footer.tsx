@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <p className="text-xs font-mono text-muted-foreground">
-            © 2025 Aryan Baranwal
+            © 2025 Aryan Baranwal. All rights reserved.
           </p>
           <p className="text-xs font-mono text-muted-foreground">
             Built with precision.
