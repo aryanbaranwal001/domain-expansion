@@ -33,7 +33,7 @@ const TechMarquee = () => {
             className="flex whitespace-nowrap"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: 15,
+              duration: 17,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop",
