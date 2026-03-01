@@ -15,15 +15,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border pt-1">
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-3 font-main font-semibold text-lg text-primary tracking-tight group">
-          {/* <img 
-            src="/mahoraga.png" 
-            alt="0x_Mahoraga" 
-            className="w-11 h-11 rounded-full object-cover"
-          /> */}
           <div className="inline-flex items-baseline gap-0">
-  <span className="text-xl">0</span>
-  <span>x_Mahoraga</span>
-</div>
+            <span className="text-xl">0</span>
+            <span>x_Mahoraga</span>
+          </div>
         </Link>
         <div className="flex items-center gap-2">
           {navItems.map((item) => (
