@@ -22,7 +22,7 @@ export const themeConfig = {
   
   // States
   muted: "#15222d",
-  mutedText: "#758b9a",
+  mutedText: "#9FB6C5",
   accent: "#177e89",
   accentText: "#fefffc",
   destructive: "#ef4444",

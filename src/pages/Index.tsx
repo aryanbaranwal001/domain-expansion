@@ -83,7 +83,7 @@ const Index = () => {
                   <span className="text-lg italic font-serif text-muted-foreground/60">
                     aka
                   </span>
-                  <span className="text-2xl md:text-3xl font-mono font-medium text-foreground tracking-tight">
+                  <span className="text-xl md:text-2xl font-mono font-medium text-foreground tracking-tight">
                     0x_Mahoraga
                   </span>
                 </div>
