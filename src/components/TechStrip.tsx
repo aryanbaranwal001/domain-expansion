@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import {
   SiRust,
   SiTypescript,
-  SiJavascript,
   SiPostgresql,
   SiClickhouse,
   SiDocker,
@@ -48,7 +47,7 @@ const TechMarquee = () => {
                   {tech.icon ? (
                     <tech.icon />
                   ) : (
-                    <span className="text-[12px] font-bold font-mono">gRPC</span>
+                    <span className="text-[12px] font-bold font-mono">No TechStack</span>
                   )}
                 </div>
                 

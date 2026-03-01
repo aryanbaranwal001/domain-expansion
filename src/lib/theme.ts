@@ -1,74 +1,33 @@
 /**
- * THEME DEFAULTS
+ * MINIMAL THEME CONFIG
  * 
- * This is the central "struct" for the entire website's theme.
- * Modifying these values will update the theme globally.
+ * Only the core necessary fields for a clean, professional look.
  * Values are in HEX format.
  */
 export const themeConfig = {
-  // Main colors
-  bg: "#08131d",
-  text: "#fefffc",
-  
-  // Branding
+  background: "#08131d",
+  foreground: "#fefffc",
   primary: "#ff9f1c",
   secondary: "#177e89",
-  
-  // UI Components
-  card: "#0a1f2f",
-  cardText: "#fefffc",
-  popover: "#08131d",
-  popoverText: "#fefffc",
-  
-  // States
   muted: "#15222d",
-  mutedText: "#9FB6C5",
-  accent: "#177e89",
-  accentText: "#fefffc",
-  destructive: "#ef4444",
-  destructiveText: "#fefffc",
-  
-  // Borders & Inputs
+  mutedForeground: "#9FB6C5",
   border: "#0a1f2f",
-  input: "#0a1f2f",
-  ring: "#ff9f1c",
-
-  // Sidebar specific
-  sidebar: {
-    bg: "#08131d",
-    text: "#fefffc",
-    primary: "#ff9f1c",
-    primaryText: "#08131d",
-    accent: "#0a1f2f",
-    accentText: "#fefffc",
-    border: "#0a1f2f",
-    ring: "#ff9f1c",
-  },
-
-  // Other tokens
-  radius: "0.375rem",
 } as const;
 
 export type ThemeConfig = typeof themeConfig;
 
 /**
  * Helper to convert Hex to HSL string format "H S% L%"
- * This allows us to keep using HSL in CSS/Tailwind which is required for opacity modifiers.
  */
 function hexToHsl(hex: string): string {
-  // Remove # if present
   hex = hex.replace(/^#/, "");
-
-  // Parse r, g, b
   const r = parseInt(hex.substring(0, 2), 16) / 255;
   const g = parseInt(hex.substring(2, 4), 16) / 255;
   const b = parseInt(hex.substring(4, 6), 16) / 255;
 
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let h = 0;
-  let s = 0;
-  const l = (max + min) / 2;
+  let h = 0, s = 0, l = (max + min) / 2;
 
   if (max !== min) {
     const d = max - min;
@@ -84,54 +43,47 @@ function hexToHsl(hex: string): string {
   return `${Math.round(h * 360)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`;
 }
 
-/**
- * Maps our shorthand JSON keys to the CSS variables used by Tailwind and the UI components.
- */
-const variableMap: Record<string, string> = {
-  bg: "--background",
-  text: "--foreground",
-  primary: "--primary",
-  secondary: "--secondary",
-  card: "--card",
-  cardText: "--card-foreground",
-  popover: "--popover",
-  popoverText: "--popover-foreground",
-  muted: "--muted",
-  mutedText: "--muted-foreground",
-  accent: "--accent",
-  accentText: "--accent-foreground",
-  destructive: "--destructive",
-  destructiveText: "--destructive-foreground",
-  border: "--border",
-  input: "--input",
-  ring: "--ring",
-};
-
 export function applyTheme(config: ThemeConfig = themeConfig) {
   const root = document.documentElement;
-  
-  // Apply main colors using the map and converting Hex to HSL numbers
-  Object.entries(config).forEach(([key, value]) => {
-    if (typeof value === 'string' && variableMap[key]) {
-      root.style.setProperty(variableMap[key], hexToHsl(value));
-    }
-  });
+  const h = (hex: string) => hexToHsl(hex);
 
-  // Apply sidebar colors
-  Object.entries(config.sidebar).forEach(([key, value]) => {
-    const suffix = key === 'bg' ? 'background' : 
-                   key === 'text' ? 'foreground' : 
-                   key === 'primaryText' ? 'primary-foreground' :
-                   key === 'accentText' ? 'accent-foreground' :
-                   key.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`);
+  // Core Mapping
+  const mappings: Record<string, string> = {
+    "--background": h(config.background),
+    "--foreground": h(config.foreground),
+    "--primary": h(config.primary),
+    "--primary-foreground": h(config.background),
+    "--secondary": h(config.secondary),
+    "--secondary-foreground": h(config.foreground),
+    "--muted": h(config.muted),
+    "--muted-foreground": h(config.mutedForeground),
+    "--border": h(config.border),
+    "--input": h(config.border),
+    "--ring": h(config.primary),
+    "--radius": "0.375rem",
     
-    root.style.setProperty(`--sidebar-${suffix}`, hexToHsl(value as string));
-  });
+    // Components (derived from core)
+    "--card": h(config.border),
+    "--card-foreground": h(config.foreground),
+    "--popover": h(config.background),
+    "--popover-foreground": h(config.foreground),
+    "--accent": h(config.secondary),
+    "--accent-foreground": h(config.foreground),
+    "--destructive": h("#ef4444"),
+    "--destructive-foreground": h(config.foreground),
 
-  // Special cases
-  root.style.setProperty('--radius', config.radius);
-  
-  // Primary/Secondary foregrounds mapped to bg/text respectively
-  root.style.setProperty('--primary-foreground', hexToHsl(config.bg)); 
-  root.style.setProperty('--secondary-foreground', hexToHsl(config.text));
+    // Sidebar (derived from core)
+    "--sidebar-background": h(config.background),
+    "--sidebar-foreground": h(config.foreground),
+    "--sidebar-primary": h(config.primary),
+    "--sidebar-primary-foreground": h(config.background),
+    "--sidebar-accent": h(config.border),
+    "--sidebar-accent-foreground": h(config.foreground),
+    "--sidebar-border": h(config.border),
+    "--sidebar-ring": h(config.primary),
+  };
+
+  Object.entries(mappings).forEach(([variable, value]) => {
+    root.style.setProperty(variable, value);
+  });
 }
