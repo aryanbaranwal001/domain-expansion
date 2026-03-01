@@ -127,7 +127,7 @@ const Index = () => {
               <img 
                 src="/mahoraga.png" 
                 alt="Aryan Baranwal" 
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/20 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/60 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
               />
             </motion.div>
           </div>
