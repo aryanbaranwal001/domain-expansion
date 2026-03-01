@@ -20,7 +20,6 @@ const NetworkBackground = () => {
     let animationId: number;
     const nodes: Node[] = [];
     const nodeCount = 40;
-    const connectionDistance = 150;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -33,9 +32,9 @@ const NetworkBackground = () => {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 2 + 0.8,
       });
     }
 
@@ -45,29 +44,10 @@ const NetworkBackground = () => {
       // Get colors from CSS variables
       const rootStyle = getComputedStyle(document.documentElement);
       const primaryHSL = rootStyle.getPropertyValue('--primary').trim().split(' ');
-      const secondaryHSL = rootStyle.getPropertyValue('--secondary').trim().split(' ');
-
-      // Draw connections
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < connectionDistance) {
-            const opacity = (1 - dist / connectionDistance) * 0.15;
-            ctx.strokeStyle = `hsla(${secondaryHSL[0]}, ${secondaryHSL[1]}, ${secondaryHSL[2]}, ${opacity})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
 
       // Draw nodes
       for (const node of nodes) {
-        ctx.fillStyle = `hsla(${primaryHSL[0]}, ${primaryHSL[1]}, ${primaryHSL[2]}, 0.2)`;
+        ctx.fillStyle = `hsla(${primaryHSL[0]}, ${primaryHSL[1]}, ${primaryHSL[2]}, 0.35)`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
