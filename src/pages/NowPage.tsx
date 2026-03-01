@@ -45,68 +45,68 @@ const NowPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-sm font-main text-muted-foreground tracking-[0.4em] uppercase mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           // now
         </motion.h1>
-        <p className="text-sm text-muted-foreground mb-16 max-w-lg">
+        <p className="text-lg text-muted-foreground mb-20 max-w-2xl leading-relaxed">
           A live snapshot of what I'm currently building, researching, and experimenting with.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
           {/* Current Project */}
           <motion.div
-            className="glow-border rounded-sm p-6 bg-card/40 md:col-span-2"
+            className="glow-border rounded-sm p-10 bg-card/40 md:col-span-2"
             custom={0}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={sectionVariants}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <Cpu className="w-4 h-4 text-primary" />
-              <h2 className="text-[10px] font-main text-primary uppercase tracking-widest">
+            <div className="flex items-center gap-3 mb-6">
+              <Cpu className="w-5 h-5 text-primary" />
+              <h2 className="text-xs font-main text-primary uppercase tracking-[0.2em] font-semibold">
                 Current Build
               </h2>
               <motion.span
-                className="ml-auto w-2 h-2 rounded-full bg-primary"
+                className="ml-auto w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]"
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
             </div>
-            <h3 className="text-base font-medium text-foreground mb-2">
+            <h3 className="text-2xl font-bold text-foreground mb-4 tracking-tight">
               {currentProject.title}
             </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
               {currentProject.description}
             </p>
           </motion.div>
 
           {/* Current Focus — Progress Bars */}
           <motion.div
-            className="glow-border rounded-sm p-6 bg-card/40"
+            className="glow-border rounded-sm p-8 bg-card/40"
             custom={1}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={sectionVariants}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Activity className="w-4 h-4 text-secondary" />
-              <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
+            <div className="flex items-center gap-3 mb-8">
+              <Activity className="w-5 h-5 text-secondary" />
+              <h2 className="text-xs font-main text-secondary uppercase tracking-[0.2em] font-semibold">
                 Current Focus
               </h2>
             </div>
-            <div className="space-y-5">
+            <div className="space-y-6">
               {focusAreas.map((area, i) => (
                 <div key={i}>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-xs text-muted-foreground">{area.label}</span>
-                    <span className="text-[10px] font-main text-muted-foreground">{area.progress}%</span>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground font-medium">{area.label}</span>
+                    <span className="text-xs font-main text-muted-foreground opacity-60">{area.progress}%</span>
                   </div>
-                  <Progress value={area.progress} className="h-1 bg-muted" />
+                  <Progress value={area.progress} className="h-1.5 bg-muted" />
                 </div>
               ))}
             </div>
@@ -114,28 +114,28 @@ const NowPage = () => {
 
           {/* Current Research */}
           <motion.div
-            className="glow-border rounded-sm p-6 bg-card/40"
+            className="glow-border rounded-sm p-8 bg-card/40"
             custom={2}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={sectionVariants}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <FlaskConical className="w-4 h-4 text-secondary" />
-              <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
+            <div className="flex items-center gap-3 mb-8">
+              <FlaskConical className="w-5 h-5 text-secondary" />
+              <h2 className="text-xs font-main text-secondary uppercase tracking-[0.2em] font-semibold">
                 Current Research
               </h2>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {research.map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
+                <div key={i} className="flex items-start gap-4">
                   <motion.span
-                    className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0"
+                    className="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0 shadow-[0_0_8px_hsl(var(--secondary))]"
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                   />
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
@@ -143,31 +143,31 @@ const NowPage = () => {
 
           {/* Experiments — Floating Chips */}
           <motion.div
-            className="glow-border rounded-sm p-6 bg-card/40 md:col-span-2"
+            className="glow-border rounded-sm p-8 bg-card/40 md:col-span-2"
             custom={3}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={sectionVariants}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Wrench className="w-4 h-4 text-primary" />
-              <h2 className="text-[10px] font-main text-primary uppercase tracking-widest">
+            <div className="flex items-center gap-3 mb-8">
+              <Wrench className="w-5 h-5 text-primary" />
+              <h2 className="text-xs font-main text-primary uppercase tracking-[0.2em] font-semibold">
                 Experiments & Explorations
               </h2>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {experiments.map((exp, i) => (
                 <motion.span
                   key={i}
-                  className="text-xs font-main px-3 py-1.5 bg-muted/60 border border-border rounded-sm text-muted-foreground"
+                  className="text-sm font-main px-4 py-2 bg-muted/60 border border-border rounded-sm text-muted-foreground hover:bg-muted transition-colors cursor-default"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{
-                    borderColor: "hsl(32, 100%, 55%)",
-                    color: "hsl(60, 100%, 99%)",
+                    borderColor: "hsl(var(--primary))",
+                    color: "hsl(var(--primary))",
                   }}
                 >
                   {exp}

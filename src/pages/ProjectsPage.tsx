@@ -62,17 +62,17 @@ const ProjectsPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-sm font-main text-muted-foreground tracking-[0.4em] uppercase mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           // projects
         </motion.h1>
-        <p className="text-sm text-muted-foreground mb-16 max-w-lg">
+        <p className="text-lg text-muted-foreground mb-20 max-w-2xl leading-relaxed">
           Systems I've designed and built. Each one solves a real infrastructure problem.
         </p>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={current}
@@ -84,24 +84,24 @@ const ProjectsPage = () => {
               transition={{ duration: 0.35, ease: "easeInOut" }}
               className="glow-border rounded-sm bg-card/40 overflow-hidden"
             >
-              <div className="grid md:grid-cols-[1fr_1.5fr]">
+              <div className="grid md:grid-cols-[1fr_1.8fr]">
                 {/* Left — System Visual */}
-                <div className="p-8 border-r border-border flex flex-col items-center justify-center bg-muted/20 relative overflow-hidden">
+                <div className="p-12 border-r border-border flex flex-col items-center justify-center bg-muted/20 relative overflow-hidden">
                   {/* Abstract grid */}
                   <div className="absolute inset-0 grid-bg opacity-30" />
-                  <div className="relative z-10 flex flex-col items-center gap-4">
-                    <div className="w-16 h-16 rounded-sm border border-border bg-card/60 flex items-center justify-center">
-                      <Icon className="w-7 h-7 text-primary" />
+                  <div className="relative z-10 flex flex-col items-center gap-6">
+                    <div className="w-20 h-20 rounded-sm border border-border bg-card/60 flex items-center justify-center shadow-xl">
+                      <Icon className="w-10 h-10 text-primary" />
                     </div>
-                    <span className="text-[10px] font-main text-primary uppercase tracking-widest">
+                    <span className="text-xs font-main text-primary uppercase tracking-[0.2em] font-semibold">
                       {project.status}
                     </span>
                     {/* Metrics */}
-                    <div className="mt-4 space-y-2">
+                    <div className="mt-6 space-y-3">
                       {project.metrics.map((m, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-secondary" />
-                          <span className="text-[10px] font-main text-muted-foreground">{m}</span>
+                        <div key={i} className="flex items-center gap-3">
+                          <span className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--secondary))]" />
+                          <span className="text-xs font-main text-muted-foreground whitespace-nowrap">{m}</span>
                         </div>
                       ))}
                     </div>
@@ -109,25 +109,25 @@ const ProjectsPage = () => {
                 </div>
 
                 {/* Right — Info */}
-                <div className="p-8 flex flex-col justify-between">
+                <div className="p-12 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-main text-muted-foreground">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-main text-muted-foreground opacity-60">
                         {current + 1} / {projects.length}
                       </span>
                     </div>
-                    <h2 className="text-lg font-semibold text-foreground mb-4">
+                    <h2 className="text-3xl font-bold text-foreground mb-6 tracking-tight">
                       {project.name}
                     </h2>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-base text-muted-foreground leading-relaxed mb-8">
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-1.5 mb-8">
+                    <div className="flex flex-wrap gap-2 mb-10">
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="text-[10px] font-main px-2.5 py-1 bg-muted rounded-sm text-muted-foreground border border-border"
+                          className="text-xs font-main px-3 py-1.5 bg-muted rounded-sm text-muted-foreground border border-border"
                         >
                           {t}
                         </span>
@@ -139,11 +139,11 @@ const ProjectsPage = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-main text-muted-foreground hover:text-primary transition-colors group"
+                    className="inline-flex items-center gap-3 text-sm font-main text-muted-foreground hover:text-primary transition-colors group self-start"
                   >
-                    <span className="text-primary">$</span>
+                    <span className="text-primary font-bold">$</span>
                     <span className="group-hover:underline">view-source</span>
-                    <Github className="w-3.5 h-3.5" />
+                    <Github className="w-4 h-4" />
                   </a>
                 </div>
               </div>

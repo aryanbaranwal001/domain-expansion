@@ -83,7 +83,7 @@ const ReadingCard = ({ item, index }: { item: typeof categories[0]["items"][0]; 
 
   return (
     <motion.div
-      className="relative h-48 cursor-pointer perspective-1000"
+      className="relative h-56 cursor-pointer perspective-1000"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -98,27 +98,27 @@ const ReadingCard = ({ item, index }: { item: typeof categories[0]["items"][0]; 
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front */}
-        <div className="absolute inset-0 backface-hidden glow-border secondary-glow rounded-sm p-5 bg-card/40 flex flex-col justify-between">
+        <div className="absolute inset-0 backface-hidden glow-border secondary-glow rounded-sm p-6 bg-card/40 flex flex-col justify-between">
           <div>
-            <span className="text-[9px] font-main text-secondary uppercase tracking-widest px-2 py-0.5 bg-secondary/10 rounded-sm border border-secondary/20">
+            <span className="text-[10px] font-main text-secondary uppercase tracking-[0.2em] px-2.5 py-1 bg-secondary/10 rounded-sm border border-secondary/20 font-semibold">
               {item.type}
             </span>
-            <h3 className="text-sm font-medium text-foreground mt-3 leading-snug">
+            <h3 className="text-base font-semibold text-foreground mt-4 leading-snug">
               {item.title}
             </h3>
           </div>
-          <p className="text-[10px] font-main text-muted-foreground">{item.meta}</p>
+          <p className="text-xs font-main text-muted-foreground opacity-70 italic">{item.meta}</p>
         </div>
 
         {/* Back */}
         <div
-          className="absolute inset-0 backface-hidden glow-border rounded-sm p-5 bg-card/60 flex flex-col justify-center border-secondary/30"
+          className="absolute inset-0 backface-hidden glow-border rounded-sm p-6 bg-card/60 flex flex-col justify-center border-secondary/30"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <p className="text-[10px] font-main text-secondary uppercase tracking-widest mb-3">
+          <p className="text-xs font-main text-secondary uppercase tracking-[0.2em] mb-4 font-semibold">
             Key Takeaway
           </p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             {item.insight}
           </p>
         </div>
@@ -132,28 +132,28 @@ const ReadingPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-sm font-main text-muted-foreground tracking-[0.4em] uppercase mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           // reading
         </motion.h1>
-        <p className="text-sm text-muted-foreground mb-16 max-w-lg">
+        <p className="text-lg text-muted-foreground mb-20 max-w-2xl leading-relaxed">
           Papers, books, and technical writing that shape how I think about systems. Hover to reveal insights.
         </p>
 
-        <div className="space-y-16 max-w-4xl">
+        <div className="space-y-20 max-w-5xl">
           {categories.map((cat, i) => {
             const CatIcon = cat.icon;
             return (
               <div key={i}>
-                <div className="flex items-center gap-2 mb-8">
-                  <CatIcon className="w-4 h-4 text-secondary" />
-                  <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
+                <div className="flex items-center gap-3 mb-10">
+                  <CatIcon className="w-5 h-5 text-secondary" />
+                  <h2 className="text-xs font-main text-secondary uppercase tracking-[0.2em] font-semibold">
                     {cat.label}
                   </h2>
                 </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {cat.items.map((item, j) => (
                     <ReadingCard key={j} item={item} index={j + i * 3} />
                   ))}

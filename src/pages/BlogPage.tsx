@@ -44,49 +44,49 @@ const BlogPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-sm font-main text-muted-foreground tracking-[0.4em] uppercase mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           // blog
         </motion.h1>
-        <p className="text-sm text-muted-foreground mb-16 max-w-lg">
+        <p className="text-lg text-muted-foreground mb-20 max-w-2xl leading-relaxed">
           Writing about systems engineering, distributed infrastructure, and the craft of building reliable software.
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-4 max-w-3xl">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-5xl">
           {posts.map((post, i) => (
             <motion.article
               key={i}
-              className="glow-border rounded-sm p-5 bg-card/30 cursor-pointer group transition-all duration-300 flex flex-col justify-between"
+              className="glow-border rounded-sm p-8 bg-card/30 cursor-pointer group transition-all duration-300 flex flex-col justify-between h-full"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -5, borderColor: "hsl(var(--primary) / 0.3)" }}
               style={{
                 transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)`,
               }}
             >
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-[9px] font-main uppercase tracking-widest px-2 py-0.5 rounded-sm border ${categoryColors[post.category]}`}>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className={`text-[10px] font-main uppercase tracking-[0.2em] px-2.5 py-1 rounded-sm border font-semibold ${categoryColors[post.category]}`}>
                     {post.category}
                   </span>
                 </div>
-                <h2 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors mb-2 leading-snug">
+                <h2 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-4 leading-tight">
                   {post.title}
                 </h2>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   {post.description}
                 </p>
               </div>
-              <div className="flex items-center gap-3 mt-4 pt-3 border-t border-border/50">
-                <span className="text-[10px] font-main text-muted-foreground">
+              <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border/50">
+                <span className="text-xs font-main text-muted-foreground opacity-70">
                   {post.date}
                 </span>
-                <span className="w-0.5 h-0.5 rounded-full bg-muted-foreground" />
-                <span className="text-[10px] font-main text-muted-foreground">
+                <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                <span className="text-xs font-main text-muted-foreground opacity-70">
                   {post.readTime}
                 </span>
               </div>

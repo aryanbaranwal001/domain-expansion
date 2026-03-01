@@ -82,7 +82,7 @@ const Index = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+                <p className="text-base text-lg text-muted-foreground leading-relaxed max-w-xl">
                   Building high-performance, scalable backend systems and 
                   blockchain infrastructure that actually makes a difference.
                 </p>
@@ -90,7 +90,7 @@ const Index = () => {
 
               {/* Original Button Design */}
               <motion.div
-                className="flex items-center gap-3"
+                className="flex items-center gap-4"
                 initial="hidden"
                 animate="visible"
                 custom={3}
@@ -98,13 +98,13 @@ const Index = () => {
               >
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-main bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-main bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
                 >
-                  View Projects <ArrowRight className="w-3 h-3" />
+                  View Projects <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/blog"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-main border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-main border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
                 >
                   Blogs
                 </Link>
@@ -120,7 +120,7 @@ const Index = () => {
               <img 
                 src="/mahoraga.png" 
                 alt="Aryan Baranwal" 
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/60 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
+                className="w-56 h-56 md:w-80 md:h-80 rounded-full object-cover border-2 border-primary/60 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
               />
             </motion.div>
           </div>
@@ -135,7 +135,7 @@ const Index = () => {
         <div className="flex-grow flex flex-col items-center justify-center pb-8">
           <motion.button
             onClick={scrollToBuilding}
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+            className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
@@ -145,45 +145,45 @@ const Index = () => {
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="text-md text-muted-foreground font-main opacity-70 group-hover:opacity-100 transition-opacity">
+              <span className="text-lg text-muted-foreground font-main opacity-70 group-hover:opacity-100 transition-opacity">
                 What I'm locked into
               </span>
-              <ChevronDown className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
+              <ChevronDown className="w-6 h-6 opacity-40 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           </motion.button>
         </div>
       </div>
 
       {/* Currently Doing */}
-      <section id="currently-building" className="container mx-auto px-6 py-24 scroll-mt-20">
-        <h2 className="text-[11px] font-main font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-12 opacity-80">
+      <section id="currently-building" className="container mx-auto px-6 py-32 scroll-mt-20">
+        <h2 className="text-sm font-main font-semibold text-muted-foreground tracking-[0.4em] uppercase mb-16 opacity-80">
           // what i'm building
         </h2>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-6">
           {currentWork.map((item, i) => (
             <motion.div
               key={i}
-              className="glow-border rounded-sm p-6 bg-card/40 transition-all duration-300 group"
+              className="glow-border rounded-sm p-8 bg-card/40 transition-all duration-300 group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
-              <div className={`w-8 h-0.5 mb-4 ${item.accent === "primary" ? "bg-primary" : "bg-secondary"}`} />
-              <p className={`text-[11px] font-main font-semibold uppercase tracking-[0.2em] mb-3 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
+              <div className={`w-12 h-0.5 mb-6 ${item.accent === "primary" ? "bg-primary" : "bg-secondary"}`} />
+              <p className={`text-xs font-main font-semibold uppercase tracking-[0.25em] mb-4 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
                 {item.label}
               </p>
-              <h3 className="text-sm font-medium text-foreground mb-2">
+              <h3 className="text-xl font-medium text-foreground mb-4">
                 {item.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              <p className="text-base text-muted-foreground leading-relaxed mb-6">
                 {item.description}
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-main font-medium px-2 py-0.5 bg-muted rounded-sm text-muted-foreground"
+                    className="text-xs font-main font-medium px-3 py-1 bg-muted rounded-sm text-muted-foreground"
                   >
                     {tag}
                   </span>
