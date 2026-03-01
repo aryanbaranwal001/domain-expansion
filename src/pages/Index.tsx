@@ -67,7 +67,7 @@ const Index = () => {
                 </span>
                 
                 {/* The Name - Proudly Displayed */}
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary leading-none mb-4">
+                <h1 className="text-5xl md:text-7xl tracking-tighter text-primary leading-none mb-4">
                   Aryan Baranwal
                 </h1>
 
