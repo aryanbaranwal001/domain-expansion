@@ -22,18 +22,18 @@ const TechMarquee = () => {
   const multiStack = [...techStack, ...techStack, ...techStack, ...techStack];
 
   return (
-    <section className="py-8 bg-transparent">
-      <div className="max-w-[1260px] mx-auto px-6">
-        <div className="relative flex overflow-hidden">
+    <section className="py-8 bg-transparent mt-[6%]">
+      <div className="mx-auto px-6">
+        <div className="relative flex overflow-hidden -mx-12">
           {/* Neutral Edge Fades */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
 
           <motion.div
             className="flex whitespace-nowrap"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: 30,
+              duration: 15,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop",

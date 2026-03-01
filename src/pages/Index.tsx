@@ -58,7 +58,7 @@ const Index = () => {
       {/* Hero Wrapper for Full Screen Height */}
       <div className="flex flex-col min-h-[calc(100vh-64px)]">
         {/* Hero */}
-        <section className="container mx-auto px-6 pt-24 pb-20">
+        <section className="container mx-auto px-6 pt-24">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-3xl">
               <motion.div
@@ -131,10 +131,12 @@ const Index = () => {
               />
             </motion.div>
           </div>
+
+          <TechStrip />
+        
         </section>
 
         {/* Tech Strip */}
-        <TechStrip />
 
         {/* Scroll Indicator */}
         <div className="flex-grow flex flex-col items-center justify-center pb-8">
