@@ -152,7 +152,7 @@ const Index = () => {
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="text-md font-sans opacity-70 group-hover:opacity-100 transition-opacity">
+              <span className="text-md text-muted-foreground font-sans opacity-70 group-hover:opacity-100 transition-opacity">
                 What I'm locked into
               </span>
               <ChevronDown className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
