@@ -73,7 +73,7 @@ const Index = () => {
 
                 {/* The Handle Section */}
                 <div className="flex items-baseline gap-3 mb-6">
-                  <span className="text-lg italic font-main text-muted-foreground/60">
+                  <span className="text-xl italic font-playfair text-muted-foreground/90">
                     aka
                   </span>
                   <span className="text-xl md:text-2xl font-main font-medium text-foreground tracking-tight">
@@ -82,7 +82,7 @@ const Index = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-base text-lg text-muted-foreground leading-relaxed max-w-xl">
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
                   Building high-performance, scalable backend systems and 
                   blockchain infrastructure that actually makes a difference.
                 </p>
