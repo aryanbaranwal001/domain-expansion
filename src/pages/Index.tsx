@@ -73,10 +73,10 @@ const Index = () => {
 
                 {/* The Handle Section */}
                 <div className="flex items-baseline gap-3 mb-6">
-                  <span className="text-lg italic font-serif text-muted-foreground/60">
+                  <span className="text-lg italic font-main text-muted-foreground/60">
                     aka
                   </span>
-                  <span className="text-xl md:text-2xl font-mono font-medium text-foreground tracking-tight">
+                  <span className="text-xl md:text-2xl font-main font-medium text-foreground tracking-tight">
                     0x_Mahoraga
                   </span>
                 </div>
@@ -98,13 +98,13 @@ const Index = () => {
               >
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-main bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
                 >
                   View Projects <ArrowRight className="w-3 h-3" />
                 </Link>
                 <Link
                   to="/blog"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-main border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
                 >
                   Blogs
                 </Link>
@@ -145,7 +145,7 @@ const Index = () => {
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="text-md text-muted-foreground font-sans opacity-70 group-hover:opacity-100 transition-opacity">
+              <span className="text-md text-muted-foreground font-main opacity-70 group-hover:opacity-100 transition-opacity">
                 What I'm locked into
               </span>
               <ChevronDown className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -156,7 +156,7 @@ const Index = () => {
 
       {/* Currently Doing */}
       <section id="currently-building" className="container mx-auto px-6 py-24 scroll-mt-20">
-        <h2 className="text-[11px] font-sans font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-12 opacity-80">
+        <h2 className="text-[11px] font-main font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-12 opacity-80">
           // what i'm building
         </h2>
         <div className="grid md:grid-cols-3 gap-4">
@@ -170,7 +170,7 @@ const Index = () => {
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
               <div className={`w-8 h-0.5 mb-4 ${item.accent === "primary" ? "bg-primary" : "bg-secondary"}`} />
-              <p className={`text-[11px] font-sans font-semibold uppercase tracking-[0.2em] mb-3 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
+              <p className={`text-[11px] font-main font-semibold uppercase tracking-[0.2em] mb-3 ${item.accent === "primary" ? "text-primary" : "text-secondary"}`}>
                 {item.label}
               </p>
               <h3 className="text-sm font-medium text-foreground mb-2">
@@ -183,7 +183,7 @@ const Index = () => {
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-sans font-medium px-2 py-0.5 bg-muted rounded-sm text-muted-foreground"
+                    className="text-[10px] font-main font-medium px-2 py-0.5 bg-muted rounded-sm text-muted-foreground"
                   >
                     {tag}
                   </span>

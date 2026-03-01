@@ -56,7 +56,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-main antialiased;
   }
 
   ::selection {
@@ -94,12 +94,6 @@
 }
 
 @layer utilities {
-  .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .font-sans {
-    font-family: 'Inter', sans-serif;
-  }
   .perspective-1000 {
     perspective: 1000px;
   }

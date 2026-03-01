@@ -100,14 +100,14 @@ const ReadingCard = ({ item, index }: { item: typeof categories[0]["items"][0]; 
         {/* Front */}
         <div className="absolute inset-0 backface-hidden glow-border secondary-glow rounded-sm p-5 bg-card/40 flex flex-col justify-between">
           <div>
-            <span className="text-[9px] font-mono text-secondary uppercase tracking-widest px-2 py-0.5 bg-secondary/10 rounded-sm border border-secondary/20">
+            <span className="text-[9px] font-main text-secondary uppercase tracking-widest px-2 py-0.5 bg-secondary/10 rounded-sm border border-secondary/20">
               {item.type}
             </span>
             <h3 className="text-sm font-medium text-foreground mt-3 leading-snug">
               {item.title}
             </h3>
           </div>
-          <p className="text-[10px] font-mono text-muted-foreground">{item.meta}</p>
+          <p className="text-[10px] font-main text-muted-foreground">{item.meta}</p>
         </div>
 
         {/* Back */}
@@ -115,7 +115,7 @@ const ReadingCard = ({ item, index }: { item: typeof categories[0]["items"][0]; 
           className="absolute inset-0 backface-hidden glow-border rounded-sm p-5 bg-card/60 flex flex-col justify-center border-secondary/30"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <p className="text-[10px] font-mono text-secondary uppercase tracking-widest mb-3">
+          <p className="text-[10px] font-main text-secondary uppercase tracking-widest mb-3">
             Key Takeaway
           </p>
           <p className="text-xs text-muted-foreground leading-relaxed">
@@ -132,7 +132,7 @@ const ReadingPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -149,7 +149,7 @@ const ReadingPage = () => {
               <div key={i}>
                 <div className="flex items-center gap-2 mb-8">
                   <CatIcon className="w-4 h-4 text-secondary" />
-                  <h2 className="text-[10px] font-mono text-secondary uppercase tracking-widest">
+                  <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
                     {cat.label}
                   </h2>
                 </div>

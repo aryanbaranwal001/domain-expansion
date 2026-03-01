@@ -47,11 +47,11 @@ const TechMarquee = () => {
                   {tech.icon ? (
                     <tech.icon />
                   ) : (
-                    <span className="text-[12px] font-bold font-mono">No TechStack</span>
+                    <span className="text-[12px] font-bold font-main">No TechStack</span>
                   )}
                 </div>
                 
-                <span className="text-[12px] font-mono font-bold uppercase tracking-[0.15em] text-foreground">
+                <span className="text-[12px] font-main font-bold uppercase tracking-[0.15em] text-foreground">
                   {tech.name}
                 </span>
               </div>

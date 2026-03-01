@@ -45,7 +45,7 @@ const NowPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -67,7 +67,7 @@ const NowPage = () => {
           >
             <div className="flex items-center gap-2 mb-4">
               <Cpu className="w-4 h-4 text-primary" />
-              <h2 className="text-[10px] font-mono text-primary uppercase tracking-widest">
+              <h2 className="text-[10px] font-main text-primary uppercase tracking-widest">
                 Current Build
               </h2>
               <motion.span
@@ -95,7 +95,7 @@ const NowPage = () => {
           >
             <div className="flex items-center gap-2 mb-6">
               <Activity className="w-4 h-4 text-secondary" />
-              <h2 className="text-[10px] font-mono text-secondary uppercase tracking-widest">
+              <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
                 Current Focus
               </h2>
             </div>
@@ -104,7 +104,7 @@ const NowPage = () => {
                 <div key={i}>
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-xs text-muted-foreground">{area.label}</span>
-                    <span className="text-[10px] font-mono text-muted-foreground">{area.progress}%</span>
+                    <span className="text-[10px] font-main text-muted-foreground">{area.progress}%</span>
                   </div>
                   <Progress value={area.progress} className="h-1 bg-muted" />
                 </div>
@@ -123,7 +123,7 @@ const NowPage = () => {
           >
             <div className="flex items-center gap-2 mb-6">
               <FlaskConical className="w-4 h-4 text-secondary" />
-              <h2 className="text-[10px] font-mono text-secondary uppercase tracking-widest">
+              <h2 className="text-[10px] font-main text-secondary uppercase tracking-widest">
                 Current Research
               </h2>
             </div>
@@ -152,7 +152,7 @@ const NowPage = () => {
           >
             <div className="flex items-center gap-2 mb-6">
               <Wrench className="w-4 h-4 text-primary" />
-              <h2 className="text-[10px] font-mono text-primary uppercase tracking-widest">
+              <h2 className="text-[10px] font-main text-primary uppercase tracking-widest">
                 Experiments & Explorations
               </h2>
             </div>
@@ -160,7 +160,7 @@ const NowPage = () => {
               {experiments.map((exp, i) => (
                 <motion.span
                   key={i}
-                  className="text-xs font-mono px-3 py-1.5 bg-muted/60 border border-border rounded-sm text-muted-foreground"
+                  className="text-xs font-main px-3 py-1.5 bg-muted/60 border border-border rounded-sm text-muted-foreground"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}

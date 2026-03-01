@@ -44,7 +44,7 @@ const BlogPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -70,7 +70,7 @@ const BlogPage = () => {
             >
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-sm border ${categoryColors[post.category]}`}>
+                  <span className={`text-[9px] font-main uppercase tracking-widest px-2 py-0.5 rounded-sm border ${categoryColors[post.category]}`}>
                     {post.category}
                   </span>
                 </div>
@@ -82,11 +82,11 @@ const BlogPage = () => {
                 </p>
               </div>
               <div className="flex items-center gap-3 mt-4 pt-3 border-t border-border/50">
-                <span className="text-[10px] font-mono text-muted-foreground">
+                <span className="text-[10px] font-main text-muted-foreground">
                   {post.date}
                 </span>
                 <span className="w-0.5 h-0.5 rounded-full bg-muted-foreground" />
-                <span className="text-[10px] font-mono text-muted-foreground">
+                <span className="text-[10px] font-main text-muted-foreground">
                   {post.readTime}
                 </span>
               </div>

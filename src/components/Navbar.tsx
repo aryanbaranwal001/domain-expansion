@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <Link to="/" className="flex items-center gap-2 font-mono text-base font-medium text-primary tracking-tight group">
+        <Link to="/" className="flex items-center gap-2 font-main text-base font-medium text-primary tracking-tight group">
           <img 
             src="/mahoraga.png" 
             alt="0x_Mahoraga" 
@@ -27,7 +27,7 @@ const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-3 py-1.5 text-sm font-mono transition-colors duration-200 rounded-sm ${
+              className={`px-3 py-1.5 text-sm font-main transition-colors duration-200 rounded-sm ${
                 location.pathname === item.path
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"

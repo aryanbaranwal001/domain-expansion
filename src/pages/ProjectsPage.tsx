@@ -62,7 +62,7 @@ const ProjectsPage = () => {
     <div className="min-h-screen pt-14 relative z-10">
       <section className="container mx-auto px-6 pt-20 pb-16">
         <motion.h1
-          className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4"
+          className="text-xs font-main text-muted-foreground tracking-widest uppercase mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -93,7 +93,7 @@ const ProjectsPage = () => {
                     <div className="w-16 h-16 rounded-sm border border-border bg-card/60 flex items-center justify-center">
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
-                    <span className="text-[10px] font-mono text-primary uppercase tracking-widest">
+                    <span className="text-[10px] font-main text-primary uppercase tracking-widest">
                       {project.status}
                     </span>
                     {/* Metrics */}
@@ -101,7 +101,7 @@ const ProjectsPage = () => {
                       {project.metrics.map((m, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-secondary" />
-                          <span className="text-[10px] font-mono text-muted-foreground">{m}</span>
+                          <span className="text-[10px] font-main text-muted-foreground">{m}</span>
                         </div>
                       ))}
                     </div>
@@ -112,7 +112,7 @@ const ProjectsPage = () => {
                 <div className="p-8 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-mono text-muted-foreground">
+                      <span className="text-[10px] font-main text-muted-foreground">
                         {current + 1} / {projects.length}
                       </span>
                     </div>
@@ -127,7 +127,7 @@ const ProjectsPage = () => {
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="text-[10px] font-mono px-2.5 py-1 bg-muted rounded-sm text-muted-foreground border border-border"
+                          className="text-[10px] font-main px-2.5 py-1 bg-muted rounded-sm text-muted-foreground border border-border"
                         >
                           {t}
                         </span>
@@ -139,7 +139,7 @@ const ProjectsPage = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-primary transition-colors group"
+                    className="inline-flex items-center gap-2 text-xs font-main text-muted-foreground hover:text-primary transition-colors group"
                   >
                     <span className="text-primary">$</span>
                     <span className="group-hover:underline">view-source</span>
