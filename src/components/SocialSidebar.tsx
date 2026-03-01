@@ -17,7 +17,7 @@ const SocialSidebar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors duration-200"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.2, delay: 0 } }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7 + i * 0.1 }}
