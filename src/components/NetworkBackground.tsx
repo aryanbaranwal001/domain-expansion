@@ -47,7 +47,7 @@ const NetworkBackground = () => {
 
       // Draw nodes
       for (const node of nodes) {
-        ctx.fillStyle = `hsla(${primaryHSL[0]}, ${primaryHSL[1]}, ${primaryHSL[2]}, 0.35)`;
+        ctx.fillStyle = `hsla(${primaryHSL[0]}, ${primaryHSL[1]}, ${primaryHSL[2]}, 0.55)`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
