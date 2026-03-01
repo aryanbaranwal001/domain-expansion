@@ -7,7 +7,7 @@ const SocialSidebar = () => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed left-6 top-[40%] -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-50 px-3 py-6 bg-card/50 backdrop-blur-md border border-border rounded-full"
+      className="fixed left-6 top-[40%] -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-50 px-4 py-6 bg-card/50 backdrop-blur-md border border-border rounded-full"
     >
       <div className="flex flex-col items-center gap-6">
         {socials.map((social, i) => (
@@ -20,7 +20,6 @@ const SocialSidebar = () => {
             whileHover={{ scale: 1.15, transition: { duration: 0.2, delay: 0 } }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7 + i * 0.1 }}
           >
             <social.icon className="w-6 h-6" />
             <span className="sr-only">{social.label}</span>

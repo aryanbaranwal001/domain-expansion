@@ -62,8 +62,8 @@ const Index = () => {
                 className="mb-8"
               >
                 {/* The Greeting */}
-                <span className="text-muted-foreground font-light text-xl md:text-2xl block mb-2">
-                  //  hi there, I'm
+                <span className="text-muted-foreground font-light text-2xl md:text-3xl block mb-2">
+                  Hi there, I'm
                 </span>
                 
                 {/* The Name - Proudly Displayed */}
