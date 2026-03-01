@@ -5,7 +5,7 @@
  * Values are in HEX format.
  */
 export const themeConfig = {
-  background: "#08131d",
+  background: "#040C14",
   foreground: "#fefffc",
   primary: "#ff9f1c",
   secondary: "#177e89",

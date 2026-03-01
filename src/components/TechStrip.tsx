@@ -41,7 +41,7 @@ const TechMarquee = () => {
             {multiStack.map((tech, i) => (
               <div
                 key={i}
-                className="flex items-center gap-4 px-8 py-3 mx-4 rounded-lg bg-transparent border border-border/30 cursor-default"
+                className="flex items-center gap-4 px-8 py-3 mx-4 rounded-full bg-background border border-secondary/40 cursor-default shadow-sm"
               >
                 <div className={`text-2xl ${tech.color}`}>
                   {tech.icon ? (
