@@ -93,17 +93,7 @@ const Index = () => {
     variants={fadeUp}
   >
     Building high-performance, scalable backend systems and 
-    blockchain infrastructure that actually make real-world impact.
-  </motion.p>
-
-  <motion.p
-    className="text-sm text-muted-foreground mb-10"
-    initial="hidden"
-    animate="visible"
-    custom={3}
-    variants={fadeUp}
-  >
-    Undergraduate at <span className="text-foreground font-medium">IIT Roorkee</span>
+    blockchain infrastructure that actually makes a difference.
   </motion.p>
 
   {/* Original Button Design */}
