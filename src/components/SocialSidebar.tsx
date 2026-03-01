@@ -1,12 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
-
-const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com/aryanbaranwal001" },
-  { icon: Twitter, label: "X / Twitter", href: "https://x.com/0x_Mahoraga" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/aryan-baranwal-64256b322/" },
-  { icon: Mail, label: "Email", href: "mailto:erenyeager108013@gmail.com" },
-];
+import { socials } from "@/config/socials";
 
 const SocialSidebar = () => {
   return (
