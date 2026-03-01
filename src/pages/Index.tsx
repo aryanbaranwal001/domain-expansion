@@ -74,7 +74,7 @@ const Index = () => {
     </h1>
 
     {/* The Handle Section */}
-    <div className="flex items-baseline gap-3">
+    <div className="flex items-baseline gap-3 mb-6">
       <span className="text-lg italic font-serif text-muted-foreground/60">
         aka
       </span>
@@ -82,28 +82,22 @@ const Index = () => {
         0x_Mahoraga
       </span>
     </div>
-  </motion.div>
 
-  {/* Description */}
-  <motion.p
-    className="text-base text-muted-foreground leading-relaxed mb-4 max-w-xl"
-    initial="hidden"
-    animate="visible"
-    custom={2}
-    variants={fadeUp}
-  >
-    Building high-performance, scalable backend systems and 
-    blockchain infrastructure that actually makes a difference.
-  </motion.p>
+    {/* Description */}
+    <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+      Building high-performance, scalable backend systems and 
+      blockchain infrastructure that actually makes a difference.
+    </p>
+    </motion.div>
 
-  {/* Original Button Design */}
-  <motion.div
+    {/* Original Button Design */}
+    <motion.div
     className="flex items-center gap-3"
     initial="hidden"
     animate="visible"
-    custom={4}
+    custom={3}
     variants={fadeUp}
-  >
+    >
     <Link
       to="/projects"
       className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
