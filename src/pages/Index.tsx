@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TechStrip from "@/components/TechStrip";
 import Footer from "@/components/Footer";
-import { Github, Twitter, Linkedin, Mail, ArrowRight, Terminal, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 const currentWork = [
   {
@@ -29,13 +29,6 @@ const currentWork = [
     tags: ["Performance", "Fault Tolerance", "Latency"],
     accent: "primary" as const,
   },
-];
-
-const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com" },
-  { icon: Twitter, label: "X / Twitter", href: "https://x.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Mail, label: "Email", href: "mailto:aryan@example.com" },
 ];
 
 const fadeUp = {
@@ -109,12 +102,12 @@ const Index = () => {
                 >
                   View Projects <ArrowRight className="w-3 h-3" />
                 </Link>
-                <a
-                  href="#contact"
+                <Link
+                  to="/blog"
                   className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
                 >
-                  Contact
-                </a>
+                  Blogs
+                </Link>
               </motion.div>
             </div>
 
@@ -201,31 +194,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="container mx-auto px-6 py-16">
-        <div className="terminal-divider mb-16" />
-        <h2 className="text-[11px] font-sans font-semibold text-muted-foreground tracking-[0.3em] uppercase mb-8 opacity-80">
-          // connect
-        </h2>
-        <div className="flex items-center gap-6 flex-wrap">
-          {socials.map((s) => (
-            <motion.a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-sans font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
-              whileHover={{ x: 2 }}
-            >
-              <s.icon className="w-4 h-4" />
-              {s.label}
-            </motion.a>
-          ))}
-        </div>
-      </section>
-
       <Footer />
     </div>
+
   );
 };
 

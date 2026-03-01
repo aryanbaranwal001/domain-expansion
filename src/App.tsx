@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { applyTheme } from "@/lib/theme";
 import Navbar from "@/components/Navbar";
+import SocialSidebar from "@/components/SocialSidebar";
 import NetworkBackground from "@/components/NetworkBackground";
 import Index from "./pages/Index";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -29,6 +30,7 @@ const App = () => {
         <BrowserRouter>
           <NetworkBackground />
           <Navbar />
+          <SocialSidebar />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/projects" element={<ProjectsPage />} />
