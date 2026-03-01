@@ -23,7 +23,7 @@ const TechMarquee = () => {
   const doubledStack = [...techStack, ...techStack];
 
   return (
-    <section className="py-8 bg-transparent overflow-hidden border-y border-zinc-500/10">
+    <section className="py-8 bg-transparent overflow-hidden">
       <div className="relative flex">
         {/* Neutral Edge Fades */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
