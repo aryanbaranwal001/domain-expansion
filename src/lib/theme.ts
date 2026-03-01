@@ -3,46 +3,46 @@
  * 
  * This is the central "struct" for the entire website's theme.
  * Modifying these values will update the theme globally.
- * Values are HSL components.
+ * Values are in HEX format.
  */
 export const themeConfig = {
   // Main colors
-  bg: "210 52% 7%",
-  text: "60 100% 99%",
+  bg: "#08131d",
+  text: "#fefffc",
   
   // Branding
-  primary: "32 100% 55%",
-  secondary: "185 73% 31%",
+  primary: "#ff9f1c",
+  secondary: "#177e89",
   
   // UI Components
-  card: "210 72% 14%",
-  cardText: "60 100% 99%",
-  popover: "210 52% 7%",
-  popoverText: "60 100% 99%",
+  card: "#0a1f2f",
+  cardText: "#fefffc",
+  popover: "#08131d",
+  popoverText: "#fefffc",
   
   // States
-  muted: "210 40% 14%",
-  mutedText: "210 20% 55%",
-  accent: "185 73% 31%",
-  accentText: "60 100% 99%",
-  destructive: "0 84.2% 60.2%",
-  destructiveText: "60 100% 99%",
+  muted: "#15222d",
+  mutedText: "#758b9a",
+  accent: "#177e89",
+  accentText: "#fefffc",
+  destructive: "#ef4444",
+  destructiveText: "#fefffc",
   
   // Borders & Inputs
-  border: "210 72% 14%",
-  input: "210 72% 14%",
-  ring: "32 100% 55%",
+  border: "#0a1f2f",
+  input: "#0a1f2f",
+  ring: "#ff9f1c",
 
   // Sidebar specific
   sidebar: {
-    bg: "210 52% 7%",
-    text: "60 100% 99%",
-    primary: "32 100% 55%",
-    primaryText: "210 52% 7%",
-    accent: "210 72% 14%",
-    accentText: "60 100% 99%",
-    border: "210 72% 14%",
-    ring: "32 100% 55%",
+    bg: "#08131d",
+    text: "#fefffc",
+    primary: "#ff9f1c",
+    primaryText: "#08131d",
+    accent: "#0a1f2f",
+    accentText: "#fefffc",
+    border: "#0a1f2f",
+    ring: "#ff9f1c",
   },
 
   // Other tokens
@@ -50,6 +50,39 @@ export const themeConfig = {
 } as const;
 
 export type ThemeConfig = typeof themeConfig;
+
+/**
+ * Helper to convert Hex to HSL string format "H S% L%"
+ * This allows us to keep using HSL in CSS/Tailwind which is required for opacity modifiers.
+ */
+function hexToHsl(hex: string): string {
+  // Remove # if present
+  hex = hex.replace(/^#/, "");
+
+  // Parse r, g, b
+  const r = parseInt(hex.substring(0, 2), 16) / 255;
+  const g = parseInt(hex.substring(2, 4), 16) / 255;
+  const b = parseInt(hex.substring(4, 6), 16) / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  return `${Math.round(h * 360)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`;
+}
 
 /**
  * Maps our shorthand JSON keys to the CSS variables used by Tailwind and the UI components.
@@ -77,10 +110,10 @@ const variableMap: Record<string, string> = {
 export function applyTheme(config: ThemeConfig = themeConfig) {
   const root = document.documentElement;
   
-  // Apply main colors using the map
+  // Apply main colors using the map and converting Hex to HSL numbers
   Object.entries(config).forEach(([key, value]) => {
     if (typeof value === 'string' && variableMap[key]) {
-      root.style.setProperty(variableMap[key], value);
+      root.style.setProperty(variableMap[key], hexToHsl(value));
     }
   });
 
@@ -92,13 +125,13 @@ export function applyTheme(config: ThemeConfig = themeConfig) {
                    key === 'accentText' ? 'accent-foreground' :
                    key.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`);
     
-    root.style.setProperty(`--sidebar-${suffix}`, value as string);
+    root.style.setProperty(`--sidebar-${suffix}`, hexToHsl(value as string));
   });
 
   // Special cases
   root.style.setProperty('--radius', config.radius);
   
-  // Also set primary/secondary foregrounds if not explicitly mapped
-  root.style.setProperty('--primary-foreground', config.bg); 
-  root.style.setProperty('--secondary-foreground', config.text);
+  // Primary/Secondary foregrounds mapped to bg/text respectively
+  root.style.setProperty('--primary-foreground', hexToHsl(config.bg)); 
+  root.style.setProperty('--secondary-foreground', hexToHsl(config.text));
 }
