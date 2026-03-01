@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TechStrip from "@/components/TechStrip";
 import Footer from "@/components/Footer";
-import { Github, Twitter, Linkedin, Mail, ArrowRight, Terminal } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, ArrowRight, Terminal, ChevronDown } from "lucide-react";
 
 const currentWork = [
   {
@@ -48,92 +48,116 @@ const fadeUp = {
 };
 
 const Index = () => {
+  const scrollToBuilding = () => {
+    const element = document.getElementById("currently-building");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="min-h-screen pt-14 relative z-10">
-      {/* Hero */}
-      <section className="container mx-auto px-6 pt-24 pb-20">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          
-          
-<div className="max-w-3xl">
-  <motion.div
-    initial="hidden"
-    animate="visible"
-    custom={1}
-    variants={fadeUp}
-    className="mb-8"
-  >
-    {/* The Greeting */}
-    <span className="text-muted-foreground font-light text-xl md:text-2xl block mb-2">
-      //  hi there, I'm
-    </span>
-    
-    {/* The Name - Proudly Displayed */}
-    <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary leading-none mb-4">
-      Aryan Baranwal
-    </h1>
+    <div className="min-h-screen pt-16 relative z-10">
+      {/* Hero Wrapper for Full Screen Height */}
+      <div className="flex flex-col min-h-[calc(100vh-64px)]">
+        {/* Hero */}
+        <section className="container mx-auto px-6 pt-24 pb-20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="max-w-3xl">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                custom={1}
+                variants={fadeUp}
+                className="mb-8"
+              >
+                {/* The Greeting */}
+                <span className="text-muted-foreground font-light text-xl md:text-2xl block mb-2">
+                  //  hi there, I'm
+                </span>
+                
+                {/* The Name - Proudly Displayed */}
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-primary leading-none mb-4">
+                  Aryan Baranwal
+                </h1>
 
-    {/* The Handle Section */}
-    <div className="flex items-baseline gap-3 mb-6">
-      <span className="text-lg italic font-serif text-muted-foreground/60">
-        aka
-      </span>
-      <span className="text-2xl md:text-3xl font-mono font-medium text-foreground tracking-tight">
-        0x_Mahoraga
-      </span>
-    </div>
+                {/* The Handle Section */}
+                <div className="flex items-baseline gap-3 mb-6">
+                  <span className="text-lg italic font-serif text-muted-foreground/60">
+                    aka
+                  </span>
+                  <span className="text-2xl md:text-3xl font-mono font-medium text-foreground tracking-tight">
+                    0x_Mahoraga
+                  </span>
+                </div>
 
-    {/* Description */}
-    <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
-      Building high-performance, scalable backend systems and 
-      blockchain infrastructure that actually makes a difference.
-    </p>
-    </motion.div>
+                {/* Description */}
+                <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+                  Building high-performance, scalable backend systems and 
+                  blockchain infrastructure that actually makes a difference.
+                </p>
+              </motion.div>
 
-    {/* Original Button Design */}
-    <motion.div
-    className="flex items-center gap-3"
-    initial="hidden"
-    animate="visible"
-    custom={3}
-    variants={fadeUp}
-    >
-    <Link
-      to="/projects"
-      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
-    >
-      View Projects <ArrowRight className="w-3 h-3" />
-    </Link>
-    <a
-      href="#contact"
-      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
-    >
-      Contact
-    </a>
-  </motion.div>
-</div>
+              {/* Original Button Design */}
+              <motion.div
+                className="flex items-center gap-3"
+                initial="hidden"
+                animate="visible"
+                custom={3}
+                variants={fadeUp}
+              >
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity"
+                >
+                  View Projects <ArrowRight className="w-3 h-3" />
+                </Link>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono border border-border text-muted-foreground rounded-sm hover:text-foreground hover:border-foreground/20 transition-colors"
+                >
+                  Contact
+                </a>
+              </motion.div>
+            </div>
 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex-shrink-0"
+            >
+              <img 
+                src="/mahoraga.png" 
+                alt="Aryan Baranwal" 
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/20 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
+              />
+            </motion.div>
+          </div>
+        </section>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex-shrink-0"
+        {/* Tech Strip */}
+        <TechStrip />
+
+        {/* Scroll Indicator */}
+        <div className="flex-grow flex flex-col items-center justify-center pb-8">
+          <motion.button
+            onClick={scrollToBuilding}
+            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
           >
-            <img 
-              src="/mahoraga.png" 
-              alt="Aryan Baranwal" 
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-2 border-primary/20 p-1 bg-card/40 backdrop-blur-sm shadow-2xl"
-            />
-          </motion.div>
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em]">what i am locked into</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-4 h-4" />
+            </motion.div>
+          </motion.button>
         </div>
-      </section>
-
-      {/* Tech Strip */}
-      <TechStrip />
+      </div>
 
       {/* Currently Doing */}
-      <section className="container mx-auto px-6 py-24">
+      <section id="currently-building" className="container mx-auto px-6 py-24 scroll-mt-20">
         <h2 className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-12">
           // what i'm building
         </h2>
