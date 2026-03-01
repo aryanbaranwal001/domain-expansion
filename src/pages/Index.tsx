@@ -147,7 +147,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em]">what i am locked into</span>
+            <span className="text-[10px] font-mono">What I'm locked into</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
