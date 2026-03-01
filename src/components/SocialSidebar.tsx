@@ -14,7 +14,7 @@ const SocialSidebar = () => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-50 px-3 py-6 bg-card/50 backdrop-blur-md border border-border rounded-full"
+      className="fixed left-6 top-[40%] -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-50 px-3 py-6 bg-card/50 backdrop-blur-md border border-border rounded-full"
     >
       <div className="flex flex-col items-center gap-6">
         {socials.map((social, i) => (
